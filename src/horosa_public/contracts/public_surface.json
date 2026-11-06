@@ -1,0 +1,1064 @@
+{
+  "schema": "horosa.public_surface.v1",
+  "scope": "Anonymous calculation-only MCP. Place inputs follow the per-tool `place` policy: `user` (birthplace or specified event place, city-level, required), `user_optional` (birthplace only affects true solar time; omitted = clock time), `client` (the chart is for here-and-now; the place comes only from the client's coarse location hint), `none` (no place is used). Directory review of these inputs is not certified by engineering checks.",
+  "guidance": {
+    "name": "horosa_agent_guidance",
+    "title": "Confirm calculation settings / 参数确认",
+    "description": "Explain the settings to confirm for one named public tool. This guidance does not run calculations or expose hidden operations."
+  },
+  "field_groups": {
+    "birth": [
+      "date",
+      "time",
+      "zone",
+      "lat",
+      "lon",
+      "ad"
+    ],
+    "none": [],
+    "gate": [
+      "agent_confirmed_settings",
+      "defaults_accepted",
+      "clarification_notes"
+    ],
+    "moment": [
+      "date",
+      "time",
+      "zone",
+      "ad"
+    ]
+  },
+  "tools": [
+    {
+      "id": "chart",
+      "name": "horosa_astro_chart",
+      "title": "Western natal chart / 西洋本命盘",
+      "description": "Calculate a Western natal chart from an explicitly provided birth time and birthplace.",
+      "field_groups": [
+        "birth",
+        "gate"
+      ],
+      "fields": [
+        "hsys",
+        "zodiacal",
+        "siderealAyanamsa",
+        "tradition",
+        "southchart",
+        "cnUnifiedZone"
+      ],
+      "required": [],
+      "place": "user"
+    },
+    {
+      "id": "relative",
+      "name": "horosa_astro_relative",
+      "title": "Relationship charts / 合盘",
+      "description": "Compare two explicitly supplied birth charts using the selected relationship method.",
+      "field_groups": [
+        "none",
+        "gate"
+      ],
+      "fields": [
+        "inner",
+        "outer",
+        "hsys",
+        "zodiacal",
+        "siderealAyanamsa",
+        "relative"
+      ],
+      "required": [],
+      "place": "user"
+    },
+    {
+      "id": "india_chart",
+      "name": "horosa_astro_india_chart",
+      "title": "Indian astrology chart / 印度占星",
+      "description": "Calculate an Indian astrology birth chart with confirmed houses, ayanamsa and observation dates.",
+      "field_groups": [
+        "birth",
+        "gate"
+      ],
+      "fields": [
+        "indiaHsys",
+        "indiaAyanamsa",
+        "indiaSchool",
+        "dashaSystem",
+        "dashaYearLength",
+        "transitDate",
+        "tajakaYear"
+      ],
+      "required": [
+        "transitDate",
+        "tajakaYear"
+      ],
+      "place": "user"
+    },
+    {
+      "id": "guolao_chart",
+      "name": "horosa_astro_guolao_chart",
+      "title": "Seven luminaries chart / 七政四余",
+      "description": "Calculate a Seven Luminaries and Four Residuals chart using explicit birth and target times.",
+      "field_groups": [
+        "birth",
+        "gate"
+      ],
+      "fields": [
+        "hsys",
+        "doubingSu28",
+        "southchart",
+        "guolaoTrueSolarTime",
+        "moiraTransitDate",
+        "moiraTransitTime"
+      ],
+      "required": [
+        "moiraTransitDate",
+        "moiraTransitTime"
+      ],
+      "place": "user"
+    },
+    {
+      "id": "horary",
+      "name": "horosa_chart_horary",
+      "title": "Horary chart / 卜卦占星",
+      "description": "Calculate a horary chart for an explicitly supplied event time and place.",
+      "field_groups": [
+        "moment",
+        "gate"
+      ],
+      "fields": [
+        "hsys",
+        "zodiacal",
+        "siderealAyanamsa",
+        "tradition",
+        "southchart",
+        "cnUnifiedZone",
+        "category",
+        "school",
+        "considerationsMode",
+        "lotsSet",
+        "sincerityConfirmed",
+        "questionText"
+      ],
+      "required": [],
+      "place": "client",
+      "place_fallback": "required"
+    },
+    {
+      "id": "election",
+      "name": "horosa_chart_election",
+      "title": "Electional chart / 择时单盘",
+      "description": "Calculate one electional chart for an explicit event time; this does not scan date ranges.",
+      "field_groups": [
+        "birth",
+        "gate"
+      ],
+      "fields": [
+        "hsys",
+        "zodiacal",
+        "siderealAyanamsa",
+        "tradition",
+        "southchart",
+        "cnUnifiedZone",
+        "topicId",
+        "school",
+        "tradeSide"
+      ],
+      "required": [],
+      "place": "user",
+      "descriptions": {
+        "lat": "Latitude of the place where the elected event will happen, city-level precision; not the user's current location.",
+        "lon": "Longitude of the place where the elected event will happen, city-level precision; not the user's current location."
+      }
+    },
+    {
+      "id": "solarreturn",
+      "name": "horosa_predict_solarreturn",
+      "title": "Solar return / 太阳返照",
+      "description": "Calculate a solar return for the birth chart and explicit target time and event location.",
+      "field_groups": [
+        "birth",
+        "gate"
+      ],
+      "fields": [
+        "hsys",
+        "zodiacal",
+        "siderealAyanamsa",
+        "tradition",
+        "southchart",
+        "cnUnifiedZone",
+        "datetime",
+        "dirZone",
+        "dirLat",
+        "dirLon"
+      ],
+      "required": [
+        "datetime"
+      ],
+      "place": "user",
+      "descriptions": {
+        "dirLat": "Optional latitude of the target event place (for example where the return is spent), city-level; defaults to the birthplace. Not the user's current location.",
+        "dirLon": "Optional longitude of the target event place, city-level; defaults to the birthplace. Not the user's current location.",
+        "dirZone": "Optional timezone at the target event place; defaults to the birth timezone."
+      }
+    },
+    {
+      "id": "lunarreturn",
+      "name": "horosa_predict_lunarreturn",
+      "title": "Lunar return / 月亮返照",
+      "description": "Calculate a lunar return for the birth chart and explicit target time and event location.",
+      "field_groups": [
+        "birth",
+        "gate"
+      ],
+      "fields": [
+        "hsys",
+        "zodiacal",
+        "siderealAyanamsa",
+        "tradition",
+        "southchart",
+        "cnUnifiedZone",
+        "datetime",
+        "dirZone",
+        "dirLat",
+        "dirLon"
+      ],
+      "required": [
+        "datetime"
+      ],
+      "place": "user",
+      "descriptions": {
+        "dirLat": "Optional latitude of the target event place (for example where the return is spent), city-level; defaults to the birthplace. Not the user's current location.",
+        "dirLon": "Optional longitude of the target event place, city-level; defaults to the birthplace. Not the user's current location.",
+        "dirZone": "Optional timezone at the target event place; defaults to the birth timezone."
+      }
+    },
+    {
+      "id": "profection",
+      "name": "horosa_predict_profection",
+      "title": "Annual profections / 小限推运",
+      "description": "Calculate profections with an explicit target time and confirmed settings.",
+      "field_groups": [
+        "birth",
+        "gate"
+      ],
+      "fields": [
+        "hsys",
+        "zodiacal",
+        "siderealAyanamsa",
+        "tradition",
+        "southchart",
+        "cnUnifiedZone",
+        "datetime",
+        "dirZone",
+        "dirLat",
+        "dirLon",
+        "profGrain",
+        "profStart"
+      ],
+      "required": [
+        "datetime"
+      ],
+      "place": "user",
+      "descriptions": {
+        "dirLat": "Optional latitude of the target event place (for example where the return is spent), city-level; defaults to the birthplace. Not the user's current location.",
+        "dirLon": "Optional longitude of the target event place, city-level; defaults to the birthplace. Not the user's current location.",
+        "dirZone": "Optional timezone at the target event place; defaults to the birth timezone."
+      }
+    },
+    {
+      "id": "firdaria",
+      "name": "horosa_predict_firdaria",
+      "title": "Firdaria periods / 法达星限",
+      "description": "Calculate the Firdaria planetary period timeline from an explicit birth chart.",
+      "field_groups": [
+        "birth",
+        "gate"
+      ],
+      "fields": [
+        "hsys",
+        "zodiacal",
+        "siderealAyanamsa",
+        "tradition",
+        "southchart",
+        "cnUnifiedZone"
+      ],
+      "required": [],
+      "place": "user"
+    },
+    {
+      "id": "prog",
+      "name": "horosa_predict_progressions",
+      "title": "Secondary progressions / 次限推运",
+      "description": "Calculate progressions for explicit birth and target times with confirmed progression settings.",
+      "field_groups": [
+        "birth",
+        "gate"
+      ],
+      "fields": [
+        "hsys",
+        "zodiacal",
+        "siderealAyanamsa",
+        "tradition",
+        "southchart",
+        "cnUnifiedZone",
+        "datetime",
+        "dirZone",
+        "dirLat",
+        "dirLon",
+        "targetDate",
+        "targetTime",
+        "minorVariant"
+      ],
+      "required": [
+        "datetime",
+        "targetDate",
+        "targetTime"
+      ],
+      "local_name": "horosa_predict_prog",
+      "place": "user",
+      "descriptions": {
+        "dirLat": "Optional latitude of the target event place (for example where the return is spent), city-level; defaults to the birthplace. Not the user's current location.",
+        "dirLon": "Optional longitude of the target event place, city-level; defaults to the birthplace. Not the user's current location.",
+        "dirZone": "Optional timezone at the target event place; defaults to the birth timezone."
+      }
+    },
+    {
+      "id": "solararc",
+      "name": "horosa_predict_solararc",
+      "title": "Solar arc directions / 太阳弧",
+      "description": "Calculate solar arc directions for an explicitly supplied target time and event location.",
+      "field_groups": [
+        "birth",
+        "gate"
+      ],
+      "fields": [
+        "hsys",
+        "zodiacal",
+        "siderealAyanamsa",
+        "tradition",
+        "southchart",
+        "cnUnifiedZone",
+        "datetime",
+        "dirZone",
+        "dirLat",
+        "dirLon"
+      ],
+      "required": [
+        "datetime"
+      ],
+      "place": "user",
+      "descriptions": {
+        "dirLat": "Optional latitude of the target event place (for example where the return is spent), city-level; defaults to the birthplace. Not the user's current location.",
+        "dirLon": "Optional longitude of the target event place, city-level; defaults to the birthplace. Not the user's current location.",
+        "dirZone": "Optional timezone at the target event place; defaults to the birth timezone."
+      }
+    },
+    {
+      "id": "ephemeris",
+      "name": "horosa_predict_ephemeris",
+      "title": "Planetary ephemeris / 星历",
+      "description": "Calculate planetary positions in an explicit bounded date range, up to 31 days.",
+      "field_groups": [
+        "birth",
+        "gate"
+      ],
+      "fields": [
+        "hsys",
+        "zodiacal",
+        "siderealAyanamsa",
+        "tradition",
+        "southchart",
+        "cnUnifiedZone",
+        "startDate",
+        "endDate",
+        "includeTransits",
+        "eclipseTimeMode"
+      ],
+      "required": [
+        "startDate",
+        "endDate"
+      ],
+      "place": "user"
+    },
+    {
+      "id": "bazi_birth",
+      "name": "horosa_cn_bazi_birth",
+      "title": "Bazi birth chart / 八字",
+      "description": "Calculate the Four Pillars birth chart with confirmed gender, time convention and school.",
+      "field_groups": [
+        "moment",
+        "gate"
+      ],
+      "fields": [
+        "timeAlg",
+        "after23NewDay",
+        "lateZiHourUseNextDay",
+        "gender",
+        "southMonth",
+        "school",
+        "cangVersion",
+        "fenyeVersion",
+        "zodiacBoundary",
+        "period"
+      ],
+      "required": [],
+      "place": "user_optional",
+      "place_fallback": "clock_time",
+      "optional_fields": [
+        "lat",
+        "lon"
+      ],
+      "descriptions": {
+        "lat": "Optional birthplace latitude; only used for true solar time. Omit to compute with clock time. City-level precision; not the user's current location.",
+        "lon": "Optional birthplace longitude; only used for true solar time. Omit to compute with clock time. City-level precision; not the user's current location."
+      }
+    },
+    {
+      "id": "ziwei_birth",
+      "name": "horosa_cn_ziwei_birth",
+      "title": "Ziwei Doushu chart / 紫微斗数",
+      "description": "Calculate a Ziwei Doushu birth chart with confirmed gender and school settings.",
+      "field_groups": [
+        "moment",
+        "gate"
+      ],
+      "fields": [
+        "timeAlg",
+        "after23NewDay",
+        "lateZiHourUseNextDay",
+        "gender",
+        "sihuaSchool",
+        "period"
+      ],
+      "required": [],
+      "place": "user_optional",
+      "place_fallback": "clock_time",
+      "optional_fields": [
+        "lat",
+        "lon"
+      ],
+      "descriptions": {
+        "lat": "Optional birthplace latitude; only used for true solar time. Omit to compute with clock time. City-level precision; not the user's current location.",
+        "lon": "Optional birthplace longitude; only used for true solar time. Omit to compute with clock time. City-level precision; not the user's current location."
+      }
+    },
+    {
+      "id": "qimen",
+      "name": "horosa_cn_qimen",
+      "title": "Qimen Dunjia chart / 奇门遁甲",
+      "description": "Calculate a Qimen Dunjia chart for an explicitly supplied event time and location.",
+      "field_groups": [
+        "moment",
+        "gate"
+      ],
+      "fields": [
+        "timeAlg",
+        "after23NewDay",
+        "lateZiHourUseNextDay",
+        "options"
+      ],
+      "required": [],
+      "place": "client",
+      "place_fallback": "clock_time"
+    },
+    {
+      "id": "liureng_gods",
+      "name": "horosa_cn_liureng_gods",
+      "title": "Da Liu Ren chart / 大六壬",
+      "description": "Calculate a Da Liu Ren event chart with confirmed nobleman method and explicit time and place.",
+      "field_groups": [
+        "moment",
+        "gate"
+      ],
+      "fields": [
+        "after23NewDay",
+        "lateZiHourUseNextDay",
+        "yue",
+        "isDiurnal",
+        "guirengType",
+        "zhanCategory"
+      ],
+      "required": [],
+      "place": "user_optional",
+      "place_fallback": "clock_time",
+      "optional_fields": [
+        "lat",
+        "lon"
+      ],
+      "descriptions": {
+        "lat": "Optional latitude of the place of the question, city-level; only affects true solar time and day/night determination. Omit to compute with clock time.",
+        "lon": "Optional longitude of the place of the question, city-level; only affects true solar time and day/night determination. Omit to compute with clock time."
+      },
+      "client_hint": true
+    },
+    {
+      "id": "sixyao",
+      "name": "horosa_cn_sixyao",
+      "title": "Six-line divination / 六爻",
+      "description": "Calculate a Six-line chart from supplied lines or deterministic casting at the explicit event time.",
+      "field_groups": [
+        "moment",
+        "gate"
+      ],
+      "fields": [
+        "timeAlg",
+        "after23NewDay",
+        "lateZiHourUseNextDay",
+        "question",
+        "gua_code",
+        "changed_code",
+        "lines",
+        "liuyaoSettings"
+      ],
+      "required": [],
+      "place": "client",
+      "place_fallback": "clock_time"
+    },
+    {
+      "id": "xiaoliuren",
+      "name": "horosa_cn_xiaoliuren",
+      "title": "Xiao Liu Ren / 小六壬",
+      "description": "Calculate Xiao Liu Ren from three supplied numbers or an explicit event time and place.",
+      "field_groups": [
+        "moment",
+        "gate"
+      ],
+      "fields": [
+        "timeAlg",
+        "after23NewDay",
+        "lateZiHourUseNextDay",
+        "nums",
+        "school",
+        "showOneThree",
+        "askEvent"
+      ],
+      "required": [],
+      "place": "client",
+      "place_fallback": "clock_time"
+    },
+    {
+      "id": "tarot",
+      "name": "horosa_cn_tarot",
+      "title": "Tarot reading / 塔罗",
+      "description": "Draw a reproducible Tarot spread from a user-supplied seed or explicit casting time and place. Never invent a seed.",
+      "field_groups": [
+        "moment",
+        "gate"
+      ],
+      "fields": [
+        "question",
+        "spread",
+        "deck",
+        "seed",
+        "usesReversals",
+        "dignities",
+        "variant",
+        "verdictMode"
+      ],
+      "required": [],
+      "place": "none",
+      "place_fallback": "ignore"
+    },
+    {
+      "id": "nongli_time",
+      "name": "horosa_cn_nongli_time",
+      "title": "Chinese lunar calendar / 农历换算",
+      "description": "Convert an explicit date and time to the Chinese lunar calendar with a confirmed time convention.",
+      "field_groups": [
+        "moment",
+        "gate"
+      ],
+      "fields": [
+        "timeAlg",
+        "after23NewDay",
+        "lateZiHourUseNextDay",
+        "cnUnifiedZone"
+      ],
+      "required": [],
+      "place": "client",
+      "place_fallback": "clock_time"
+    },
+    {
+      "id": "huangli",
+      "name": "horosa_cn_huangli",
+      "title": "Chinese almanac / 黄历",
+      "description": "Read the Chinese almanac for one explicit calendar date and optional hour.",
+      "field_groups": [
+        "none",
+        "gate"
+      ],
+      "fields": [
+        "date",
+        "hour"
+      ],
+      "required": [],
+      "place": "none"
+    },
+    {
+      "id": "jieqi_year",
+      "name": "horosa_cn_jieqi_year",
+      "title": "Yearly solar terms / 二十四节气",
+      "description": "Calculate the twenty-four solar terms for an explicit year, timezone and event location.",
+      "field_groups": [
+        "none",
+        "gate"
+      ],
+      "fields": [
+        "year",
+        "zone",
+        "lat",
+        "lon",
+        "time",
+        "hsys",
+        "southchart",
+        "ad"
+      ],
+      "required": [],
+      "place": "user"
+    }
+  ],
+  "nested_inputs": {
+    "relative.inner": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "Birth date, YYYY-MM-DD."
+        },
+        "time": {
+          "type": "string",
+          "description": "Birth time, HH:mm:ss."
+        },
+        "zone": {
+          "type": "string",
+          "description": "Timezone of the birth date."
+        },
+        "lat": {
+          "type": "string",
+          "description": "Birthplace latitude; city-level precision suffices. Not the user current location."
+        },
+        "lon": {
+          "type": "string",
+          "description": "Birthplace longitude; city-level precision suffices. Not the user current location."
+        },
+        "ad": {
+          "type": "integer",
+          "description": "Era: 1 CE or -1 BCE."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "date",
+        "time",
+        "zone",
+        "lat",
+        "lon"
+      ]
+    },
+    "relative.outer": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "Birth date, YYYY-MM-DD."
+        },
+        "time": {
+          "type": "string",
+          "description": "Birth time, HH:mm:ss."
+        },
+        "zone": {
+          "type": "string",
+          "description": "Timezone of the birth date."
+        },
+        "lat": {
+          "type": "string",
+          "description": "Birthplace latitude; city-level precision suffices. Not the user current location."
+        },
+        "lon": {
+          "type": "string",
+          "description": "Birthplace longitude; city-level precision suffices. Not the user current location."
+        },
+        "ad": {
+          "type": "integer",
+          "description": "Era: 1 CE or -1 BCE."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "date",
+        "time",
+        "zone",
+        "lat",
+        "lon"
+      ]
+    },
+    "qimen.options": {
+      "type": "object",
+      "properties": {
+        "qijuMethod": {
+          "type": "string",
+          "description": "Casting method. User confirmation is required.",
+          "enum": [
+            "zhirun",
+            "chaibu",
+            "maoshan",
+            "wurun",
+            "shuzi"
+          ]
+        },
+        "paiPanType": {
+          "type": "integer",
+          "description": "Year/month/day/hour/quarter-hour chart type.",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "school": {
+          "type": "string",
+          "description": "Qimen layout school.",
+          "enum": [
+            "转盘",
+            "飞盘",
+            "混合"
+          ]
+        },
+        "shuziReportNumber": {
+          "type": "integer",
+          "description": "A number explicitly supplied by the user for number-based casting.",
+          "minimum": 1,
+          "maximum": 999999
+        },
+        "timeAlg": {
+          "type": "integer",
+          "description": "0 true solar time; 1 clock time.",
+          "enum": [
+            0,
+            1
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "sixyao.lines": {
+      "type": "array",
+      "description": "Six supplied lines from bottom to top; omit for deterministic event-time casting.",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "description": "0 yin; 1 yang.",
+            "enum": [
+              0,
+              1
+            ]
+          },
+          "change": {
+            "type": "boolean",
+            "description": "Whether this line changes."
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value"
+        ]
+      }
+    },
+    "sixyao.liuyaoSettings": {
+      "type": "object",
+      "properties": {
+        "school": {
+          "type": "string",
+          "description": "Six-line school preset."
+        },
+        "askType": {
+          "type": "string",
+          "description": "Subject category for selecting the significator."
+        },
+        "yongOverride": {
+          "type": "string",
+          "description": "User-confirmed significator override."
+        },
+        "yearBoundary": {
+          "type": "string",
+          "description": "Year boundary convention."
+        }
+      },
+      "additionalProperties": false
+    },
+    "bazi_birth.period": {
+      "type": "object",
+      "properties": {
+        "liunian": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "description": "Explicit calendar years."
+        },
+        "liuyue": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "description": "Lunar month indices."
+        },
+        "liuri": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "description": "Calendar day indices."
+        },
+        "liushi": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "description": "Two-hour period indices."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ziwei_birth.period": {
+      "type": "object",
+      "properties": {
+        "liunian": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "description": "Explicit calendar years."
+        },
+        "liuyue": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "description": "Lunar month indices."
+        },
+        "liuri": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "description": "Calendar day indices."
+        },
+        "liushi": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 3,
+          "description": "Two-hour period indices."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "forbidden_input_keys": [
+    "name",
+    "pos",
+    "gpsLat",
+    "gpsLon",
+    "save_result",
+    "request",
+    "response_view",
+    "trace_id",
+    "group_id",
+    "run_id",
+    "memory_ref"
+  ],
+  "limits": {
+    "max_request_body_bytes": 65536,
+    "max_output_bytes": 65536,
+    "timeout_seconds": 60,
+    "max_concurrent_tools": 4,
+    "max_text_chars": 2048,
+    "max_array_items": 32,
+    "max_depth": 6,
+    "ephemeris_max_days": 31,
+    "max_output_bytes_scope": "Serialized MCP CallToolResult UTF-8 bytes, including content and structuredContent, excluding outer JSON-RPC framing."
+  },
+  "output_measurement": {
+    "status": "fixture replay measured; full Linux live matrix pending P2",
+    "basis": "Eight repository golden/recorded snapshot samples; includes two MCP copies and JSON quoting. This is not an all-tool maximum or directory compliance approval.",
+    "max_measured_public_mcp_result_bytes": 47534,
+    "cap_rationale": "64 KiB limits anonymous response load, leaves room above the recorded sample maximum, and truncates larger results with a warning.",
+    "samples": [
+      {
+        "tool": "chart",
+        "fixture": "tests/fixtures/export_snapshots/astrochart_classical_live_snapshot.txt",
+        "sha256": "cf3308c4c62a650c2f9e8f7606efe42f5e8563b68b4c48b8b92d743e5d225fc2",
+        "snapshot_utf8_bytes": 31131,
+        "public_mcp_result_bytes": 47534,
+        "public_sections": 8
+      },
+      {
+        "tool": "bazi_birth",
+        "fixture": "tests/fixtures/export_snapshots/bazi_live_snapshot.txt",
+        "sha256": "0fe68d2552bdef68d25317df80b114d25e018aba4786cd2e327ad61cf0ad23fe",
+        "snapshot_utf8_bytes": 627,
+        "public_mcp_result_bytes": 1860,
+        "public_sections": 5
+      },
+      {
+        "tool": "ziwei_birth",
+        "fixture": "tests/fixtures/export_snapshots/ziwei_live_snapshot.txt",
+        "sha256": "bcd68f839cd333760e25a4403dd783d52abb8d35027fe08cba248a7263abc7e7",
+        "snapshot_utf8_bytes": 347,
+        "public_mcp_result_bytes": 1173,
+        "public_sections": 2
+      },
+      {
+        "tool": "qimen",
+        "fixture": "tests/fixtures/export_snapshots/qimen_live_snapshot.txt",
+        "sha256": "cef5f8aba9820051214f334179095c150b525b035dcc32f1690ea95ac5fa940a",
+        "snapshot_utf8_bytes": 658,
+        "public_mcp_result_bytes": 1915,
+        "public_sections": 5
+      },
+      {
+        "tool": "liureng_gods",
+        "fixture": "tests/fixtures/export_snapshots/liureng_live_snapshot.txt",
+        "sha256": "f1d513fb69873ba6cc089e665a1b35d595406976d4072e9660a7a6eec60c16c8",
+        "snapshot_utf8_bytes": 799,
+        "public_mcp_result_bytes": 2267,
+        "public_sections": 6
+      },
+      {
+        "tool": "sixyao",
+        "fixture": "tests/fixtures/export_snapshots/sixyao_live_snapshot.txt",
+        "sha256": "a1666363998b2ac93d6df2be58a5e7275bfaa49b012c48c1f37866779a0be41c",
+        "snapshot_utf8_bytes": 282,
+        "public_mcp_result_bytes": 1097,
+        "public_sections": 4
+      },
+      {
+        "tool": "jieqi_year",
+        "fixture": "tests/fixtures/export_snapshots/jieqi_live_snapshot.txt",
+        "sha256": "bf258b819caefdcee1edf14080b9d06f364148e8a246176ded0aa3e7e541f19a",
+        "snapshot_utf8_bytes": 394,
+        "public_mcp_result_bytes": 1373,
+        "public_sections": 5
+      },
+      {
+        "tool": "guolao_chart",
+        "fixture": "tests/fixtures/sync311_w3b_guolao_live.json",
+        "sha256": "2a27f686e57e81144a53d9e1928192fa4a382b40d172c205151014b2562abda5",
+        "snapshot_utf8_bytes": 11274,
+        "public_mcp_result_bytes": 22165,
+        "public_sections": 12
+      }
+    ]
+  },
+  "denied_section_patterns": [
+    "寿命",
+    "寿夭",
+    "死亡",
+    "疾病",
+    "诊断",
+    "医疗",
+    "手术",
+    "疾厄",
+    "夭折",
+    "病符",
+    "āyurdāya",
+    "ayurdaya",
+    "longevity",
+    "lifespan",
+    "death",
+    "disease",
+    "diagnos",
+    "surgery"
+  ],
+  "denied_content_patterns": [
+    "寿命",
+    "寿限",
+    "寿夭",
+    "死亡",
+    "疾病",
+    "诊断",
+    "用药",
+    "自杀",
+    "suicide",
+    "death",
+    "lifespan",
+    "longevity",
+    "diagnos",
+    "surgery"
+  ],
+  "forbidden_output_keys": [
+    "trace_id",
+    "group_id",
+    "memory_ref",
+    "run_id",
+    "generated_at",
+    "created_at",
+    "timestamp",
+    "input_normalized",
+    "artifact_path"
+  ],
+  "card_setting_fields": [
+    "after23NewDay",
+    "lateZiHourUseNextDay",
+    "guirengType",
+    "southMonth",
+    "timeAlg",
+    "pdMethod",
+    "tradition",
+    "predictive",
+    "zodiacal",
+    "hsys",
+    "gender",
+    "school",
+    "profile",
+    "zoneAdvisory",
+    "siderealAyanamsa",
+    "siderealModeKey",
+    "ayanamsaValue",
+    "seed",
+    "transitDate",
+    "tajakaYear",
+    "moiraTransitDate",
+    "moiraTransitTime"
+  ],
+  "challenge_env": "HOROSA_OPENAI_CHALLENGE",
+  "excluded_section_titles": [
+    "当前时点"
+  ],
+  "place_policies": {
+    "user": "Birthplace or specified event place supplied by the user at city-level precision; coordinates are rounded to 0.01°.",
+    "user_optional": "Birthplace (or place of the question when `client_hint` is true) is optional and only affects true solar time; when omitted the calculation uses clock time. A birthplace is never taken from the client's location hint.",
+    "client": "No place input. The client's coarse location hint (_meta openai/userLocation) is used when present.",
+    "none": "No place is used by the calculation."
+  },
+  "place_fallbacks": {
+    "clock_time": "Without a place: force timeAlg=1 (clock time), synthesize the timezone meridian, strip place echoes, warn.",
+    "required": "Without a place the tool returns public.location_unavailable and runs nothing.",
+    "ignore": "Without a place: synthesize the timezone meridian silently (the value cannot change the result)."
+  },
+  "place_echo_prefixes": [
+    "经纬度：",
+    "经纬度:",
+    "经度：",
+    "纬度：",
+    "地点：",
+    "真太阳时："
+  ]
+}

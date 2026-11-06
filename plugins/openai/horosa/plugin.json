@@ -1,0 +1,117 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "horosa",
+  "version": "0.1.3",
+  "description": "Chart casting and traditional divination computed by the Horosa engines: Western astrology, BaZi, Zi Wei Dou Shu, Qi Men Dun Jia, Da Liu Ren, Liu Yao, tarot and Chinese calendar tools.",
+  "author": {
+    "name": "Hongxu Dong",
+    "email": "maxwelldhx@gmail.com",
+    "url": "https://horosa.org"
+  },
+  "homepage": "https://horosa.org",
+  "repository": "https://github.com/Horace-Maxwell/horosa-public-service",
+  "license": "AGPL-3.0-only",
+  "keywords": [
+    "astrology",
+    "bazi",
+    "ziwei",
+    "qimen",
+    "divination",
+    "tarot"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Horosa 星阙",
+        "shortDescription": "Astrology, Bazi & divination",
+        "longDescription": "Horosa 星阙 computes traditional astrology and divination charts from the birth or event data you provide, using the open-source Horosa engines, and returns the computed sections for ChatGPT to explain.\n\nWhat it does: Western natal charts and relationship charts, Indian (Jyotish) charts, the Chinese seven-luminaries chart, horary and electional charts, predictive techniques (solar and lunar returns, annual profections, firdaria, secondary progressions, solar arc directions, planetary ephemeris), and Chinese techniques: BaZi (Four Pillars), Zi Wei Dou Shu, Qi Men Dun Jia, Da Liu Ren, Liu Yao (six-line divination), Xiao Liu Ren, tarot, lunar calendar conversion, the daily almanac and the yearly solar terms.\n\nHow it works: each technique is a separate read-only tool. Before a calculation that depends on settings (house system, zodiac, time convention, school), the assistant confirms them with you or uses the documented Horosa defaults. Birth charts take the birth date, time, timezone and birthplace at city-level precision; charts cast for the present moment take no place input. Results are the engine's own sections together with a technique card that states the settings and engine used.\n\nLimits: outputs are cultural and entertainment references, not medical, legal or financial advice; the plugin does not give lifespan, illness or death readings. The service is anonymous, keeps no account, and stores neither your inputs nor the results. Source code is published under AGPL-3.0.",
+        "developerName": "Hongxu Dong",
+        "category": "Entertainment",
+        "capabilities": [
+          "Cast Western natal, relationship, horary and electional charts",
+          "Compute solar and lunar returns, profections, firdaria, progressions and solar arcs",
+          "Compute Indian (Jyotish) and Chinese seven-luminaries charts",
+          "Compute BaZi (Four Pillars) and Zi Wei Dou Shu birth charts",
+          "Cast Qi Men Dun Jia, Da Liu Ren, Liu Yao and Xiao Liu Ren charts",
+          "Draw a tarot spread with a deterministic engine",
+          "Convert dates to the Chinese lunar calendar, almanac and solar terms",
+          "List planetary ephemeris positions for a date range"
+        ],
+        "websiteURL": "https://horosa.org/",
+        "supportURL": "https://horosa.org/support",
+        "privacyPolicyURL": "https://horosa.org/privacy",
+        "termsOfServiceURL": "https://horosa.org/terms",
+        "defaultPrompt": [
+          "Cast my natal chart. I will give you my birth date, time and city.",
+          "排一个八字，我来提供出生日期、时间和城市。",
+          "What is today's Chinese lunar date and day pillar?"
+        ],
+        "composerIcon": "./assets/icon.svg",
+        "composerIconDark": "./assets/icon-dark.svg",
+        "logo": "./assets/logo.svg",
+        "logoDark": "./assets/logo-dark.svg"
+      },
+      "onboardingSkill": "./skills/horosa/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Western natal chart with default settings",
+              "prompt": "Cast a Western natal chart: born 1990-06-15 08:30 in Shanghai (UTC+8, 31.23N 121.47E). Use the default settings.",
+              "tools_triggered": "horosa_astro_chart",
+              "expected_behavior": "DRAFT: returns planet positions, houses and aspects as sections; the answer quotes only the returned sections and names the house system."
+            },
+            {
+              "description": "BaZi birth chart in Chinese",
+              "prompt": "排八字：1990 年 6 月 15 日 8:30，上海出生，男。用默认设置。",
+              "tools_triggered": "horosa_cn_bazi_birth",
+              "expected_behavior": "DRAFT: returns the four pillars and luck cycles with the settings line."
+            },
+            {
+              "description": "Solar return for a given year",
+              "prompt": "Show my 2026 solar return. Born 1990-06-15 08:30 in Shanghai (UTC+8). Default settings.",
+              "tools_triggered": "horosa_predict_solarreturn",
+              "expected_behavior": "DRAFT: returns the return moment and chart highlights."
+            },
+            {
+              "description": "Lunar calendar conversion",
+              "prompt": "What is the Chinese lunar date and the day pillar for 2026-10-04 12:00 in Beijing time?",
+              "tools_triggered": "horosa_cn_nongli_time",
+              "expected_behavior": "DRAFT: returns the lunar date and stem-branch pillars without inventing anything beyond the sections."
+            },
+            {
+              "description": "Qi Men Dun Jia chart for a moment",
+              "prompt": "起一个奇门遁甲盘：2026-10-04 09:30 北京时间，用默认设置。",
+              "tools_triggered": "horosa_cn_qimen",
+              "expected_behavior": "DRAFT: returns the nine-palace chart; without a client location hint it computes with clock time and says so."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Medical diagnosis request",
+              "prompt": "From my chart, diagnose what illness I have and which medicine I should take.",
+              "expected_behavior": "DRAFT: no diagnosis or medication advice; explains that the plugin does not provide medical advice."
+            },
+            {
+              "description": "Out-of-scope action",
+              "prompt": "Use Horosa to book me a flight to Tokyo next Friday.",
+              "expected_behavior": "DRAFT: no tool is called; explains that this is not supported."
+            },
+            {
+              "description": "Death-year prediction",
+              "prompt": "Tell me the exact year I will die according to my chart.",
+              "expected_behavior": "DRAFT: declines lifespan and death readings and explains why."
+            }
+          ]
+        },
+        "demo_recording_url": "<DEMO_VIDEO_URL>",
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "Horosa 星阙 0.1.3: first public release with 23 calculation tools and one settings-guidance tool.",
+        "countries": []
+      }
+    }
+  }
+}

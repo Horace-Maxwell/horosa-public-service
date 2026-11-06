@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- LaunchAgent: start the dedicated Colima VM at login so the horosa-public container (restart=unless-stopped) comes back by itself.
+     Install:  cp deploy/mini/com.horosa.colima-plugin.plist ~/Library/LaunchAgents/ && launchctl load ~/Library/LaunchAgents/com.horosa.colima-plugin.plist
+     Replace /opt/homebrew/bin/colima with `which colima` if Homebrew lives elsewhere. Requires automatic login. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.horosa.colima-plugin</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/colima</string>
+    <string>start</string>
+    <string>horosa-plugin</string>
+    <string>--activate=false</string>
+    <string>--ssh-config=false</string>
+    <string>--vz-rosetta</string>
+  </array>
+  <key>RunAtLoad</key><true/>
+  <key>StandardOutPath</key><string>/tmp/horosa-colima-plugin.out.log</string>
+  <key>StandardErrorPath</key><string>/tmp/horosa-colima-plugin.err.log</string>
+  <key>EnvironmentVariables</key>
+  <dict><key>PATH</key><string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string></dict>
+</dict>
+</plist>

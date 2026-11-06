@@ -1,0 +1,7 @@
+# Read-only copies from horosa-skill tag v0.47.1 (files the wheel does not ship; the seed helper expects this scripts/ + contracts/ layout). Do not edit; re-copy on a new pin.
+tag: v0.47.1
+tag_commit: b1041aa5f8431c1d5b4b71c0cd28349d27132fd5
+scripts/runtime_seed.py blob=de6d238fb3081090e41d3f559e197fa595c78b7e
+scripts/verify_runtime_release.py blob=c8582e835c30c05368d5c9b0b77818c17c73aec7
+contracts/runtime_python_lock.json blob=be6ad5276fa63712b0bde39e5b1c15bf2e3f809e
+contracts/runtime_toolchain.json blob=5fd15f050b825ed04d4d51f8fdf8b8348ed1a34d

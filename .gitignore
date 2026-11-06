@@ -1,0 +1,11 @@
+# 本地材料：手册与验收证据（体积大、含本机路径）
+*.local.md
+notes-local/
+
+# 构建与环境
+build/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+*.egg-info/
