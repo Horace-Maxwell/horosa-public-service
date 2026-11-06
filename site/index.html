@@ -1,14 +1,59 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Horosa 星阙</title><link rel="stylesheet" href="/_style.css"></head><body><main><header><nav><a href="/">首页 Home</a><a href="/privacy">隐私 Privacy</a><a href="/terms">条款 Terms</a><a href="/support">支持 Support</a></nav></header>
-<h1>Horosa 星阙</h1>
-<p>Horosa 星阙是一组用开源引擎计算传统占星与术数盘面的工具：西洋本命盘与推运、印度占星、七政四余、八字、紫微斗数、奇门遁甲、大六壬、六爻、小六壬、塔罗，以及农历、黄历、二十四节气换算。</p>
-<p class="muted">Horosa 星阙 computes traditional astrology and divination charts with open-source engines: Western natal and predictive charts, Indian astrology, the seven-luminaries chart, BaZi, Zi Wei Dou Shu, Qi Men Dun Jia, Da Liu Ren, Liu Yao, Xiao Liu Ren, tarot, and Chinese calendar conversions.</p>
-<h2>它做什么 · What it does</h2>
-<ul><li>在 ChatGPT 与 Codex 的插件里作为一组只读计算工具出现；你提供出生或事件的日期、时间、时区与城市级地点，引擎返回计算结果的分段文本和一张技法卡（所用设置、引擎、版本）。</li>
-<li>Each technique is a separate read-only tool. You provide the date, time, timezone and city-level place of the birth or event; the engine returns its computed sections and a technique card listing the settings used.</li></ul>
-<h2>它不做什么 · What it does not do</h2>
-<ul><li>不存储你的输入和结果，没有账号，不需要登录。 / No storage of inputs or results, no accounts, no sign-in.</li>
-<li>不提供寿命、疾病、死亡断语，也不提供医疗、法律、财务建议。 / No lifespan, illness or death readings; no medical, legal or financial advice.</li>
-<li>结果属于传统文化与娱乐参考。 / Results are cultural and entertainment references.</li></ul>
-<h2>源码 · Source</h2>
-<p>本服务与计算引擎都以 AGPL-3.0-only 发布：<a href="https://github.com/Horace-Maxwell/horosa-public-service">服务源码</a>，<a href="https://github.com/Horace-Maxwell/horosa-skill">Horosa Skill 引擎</a>。 / This service and its engines are published under AGPL-3.0-only.</p>
-<footer>© <span class="publisher">Hongxu Dong</span> · Horosa 星阙 · 源码 Source: <a href="https://github.com/Horace-Maxwell/horosa-public-service">github.com/Horace-Maxwell/horosa-public-service</a>（AGPL-3.0-only） · 本站不使用 Cookie，不追踪访客。This site sets no cookies and does not track visitors.</footer></main></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Horosa 星阙</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip" href="#content">跳到正文 Skip to content</a>
+<header class="masthead">
+<div class="sheet">
+<nav aria-label="网站导航 Site"><a href="/" aria-current="page"><span>首页</span><span lang="en">Home</span></a><a href="/privacy"><span>隐私</span><span lang="en">Privacy</span></a><a href="/terms"><span>条款</span><span lang="en">Terms</span></a><a href="/support"><span>支持</span><span lang="en">Support</span></a></nav>
+<h1>星阙<span lang="en">Horosa</span></h1>
+<p class="meta">Horosa 星阙是一组用开源引擎计算传统占星与术数盘面的工具：西洋本命盘与推运、印度占星、七政四余、八字、紫微斗数、奇门遁甲、大六壬、六爻、小六壬、塔罗，以及农历、黄历、二十四节气换算。<span lang="en">Horosa 星阙 computes traditional astrology and divination charts with open-source engines: Western natal and predictive charts, Indian astrology, the seven-luminaries chart, BaZi, Zi Wei Dou Shu, Qi Men Dun Jia, Da Liu Ren, Liu Yao, Xiao Liu Ren, tarot, and Chinese calendar conversions.</span></p>
+</div>
+</header>
+<main id="content" class="sheet">
+<section class="clause plain">
+<div class="zh">
+<h2>它做什么</h2>
+<ul><li>在 ChatGPT 与 Codex 的插件里作为一组只读计算工具出现；你提供出生或事件的日期、时间、时区与城市级地点，引擎返回计算结果的分段文本和一张技法卡（所用设置、引擎、版本）。</li></ul>
+</div>
+<div class="en" lang="en">
+<h2>What it does</h2>
+<ul><li>Each technique is a separate read-only tool. You provide the date, time, timezone and city-level place of the birth or event; the engine returns its computed sections and a technique card listing the settings used.</li></ul>
+</div>
+</section>
+<section class="clause plain">
+<div class="zh">
+<h2>它不做什么</h2>
+<ul><li>不存储你的输入和结果，没有账号，不需要登录。</li><li>不提供寿命、疾病、死亡断语，也不提供医疗、法律、财务建议。</li><li>结果属于传统文化与娱乐参考。</li></ul>
+</div>
+<div class="en" lang="en">
+<h2>What it does not do</h2>
+<ul><li>No storage of inputs or results, no accounts, no sign-in.</li><li>No lifespan, illness or death readings; no medical, legal or financial advice.</li><li>Results are cultural and entertainment references.</li></ul>
+</div>
+</section>
+<section class="clause plain">
+<div class="zh">
+<h2>源码</h2>
+<p>本服务与计算引擎都以 AGPL-3.0-only 发布：<a href="https://github.com/Horace-Maxwell/horosa-public-service">服务源码</a>，<a href="https://github.com/Horace-Maxwell/horosa-skill">Horosa Skill 引擎</a>。</p>
+</div>
+<div class="en" lang="en">
+<h2>Source</h2>
+<p>This service and its engines are published under AGPL-3.0-only: <a href="https://github.com/Horace-Maxwell/horosa-public-service">service source</a>, <a href="https://github.com/Horace-Maxwell/horosa-skill">Horosa Skill engines</a>.</p>
+</div>
+</section>
+</main>
+<footer class="colophon">
+<div class="sheet">
+<p class="owner">© <span class="publisher">Hongxu Dong</span></p>
+<p>本服务以 AGPL-3.0-only 发布，<a href="https://github.com/Horace-Maxwell/horosa-public-service">源码在 GitHub</a>。本站不使用 Cookie，不追踪访客。</p>
+<p lang="en">Published under AGPL-3.0-only. <a href="https://github.com/Horace-Maxwell/horosa-public-service">Source on GitHub</a>. This site sets no cookies and does not track visitors.</p>
+</div>
+</footer>
+</body>
+</html>

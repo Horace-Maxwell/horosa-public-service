@@ -35,6 +35,10 @@ def verify(*, allow_placeholders: bool = False) -> list[str]:
         match = re.search(r'class="publisher">([^<]+)<', text)
         if match:
             publishers.add(match.group(1))
+        for asset in re.findall(r'(?:href|src)="/([\w.-]+\.(?:css|svg))"', text):
+            if not (SITE / asset).is_file():
+                problems.append(f"{name}: missing asset {asset}")
+    problems += [f"{path.name}: GitHub Pages does not publish names starting with _" for path in sorted(SITE.iterdir()) if path.name.startswith("_")]
     if len(publishers) > 1:
         problems.append(f"publisher name differs between pages: {sorted(publishers)}")
     if (SITE / "CNAME").read_text(encoding="utf-8").strip() != "horosa.org":

@@ -69,9 +69,9 @@
             },
             {
               "description": "Solar return for a given year",
-              "prompt": "Show my 2026 solar return. Born 1990-06-15 08:30 in Shanghai (UTC+8). Default settings.",
+              "prompt": "Show my solar return for the target time 2026-06-15 08:30:00 in Shanghai (31.23N 121.47E). Born 1990-06-15 08:30 in Shanghai (UTC+8). Use the default settings.",
               "tools_triggered": "horosa_predict_solarreturn",
-              "expected_behavior": "DRAFT: returns the return moment and chart highlights."
+              "expected_behavior": "DRAFT: returns the solar return chart information, aspects and method note as sections, and names the settings used."
             },
             {
               "description": "Lunar calendar conversion",

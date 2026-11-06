@@ -1,7 +1,0 @@
-:root{--bg:#f7f3e8;--fg:#1f2937;--muted:#5b6472;--line:#d9d2c0;--accent:#2b3a55;--max:760px}
-@media (prefers-color-scheme:dark){:root{--bg:#101418;--fg:#e8e6df;--muted:#a3a89f;--line:#2a3036;--accent:#e9d8a6}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"PingFang SC","Noto Sans CJK SC",Segoe UI,sans-serif}
-main{max-width:var(--max);margin:0 auto;padding:40px 16px 64px}header nav a{margin-right:14px;color:var(--accent);text-decoration:none}
-h1{font-size:1.8rem;margin:.6em 0 .3em}h2{font-size:1.2rem;margin-top:2em;border-bottom:1px solid var(--line);padding-bottom:.2em}
-p,li{color:var(--fg)}.muted{color:var(--muted)}footer{margin-top:3em;border-top:1px solid var(--line);padding-top:1em;color:var(--muted);font-size:.9rem}
-code{background:rgba(127,127,127,.12);padding:0 .3em;border-radius:4px}

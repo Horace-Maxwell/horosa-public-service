@@ -67,6 +67,7 @@ when the user explicitly accepts the Horosa defaults. Never set either flag on y
 - Repeat the `technique_card` settings (house system, zodiac, time convention, school) so the user knows what was used.
 - Pass `warnings` on to the user in plain words (for example clock-time computation, omitted sections, truncation).
 - Never calculate anything yourself — no mental ephemeris, no manual stem-branch arithmetic.
+- Answer from the tool result alone. Do not fill gaps or cross-check with web search. If you must add outside material, label it clearly as not from Horosa.
 
 ## 5. Boundaries
 

@@ -26,6 +26,16 @@ def test_a_placeholder_coming_back_blocks_publishing(tmp_path, monkeypatch):
     assert any("terms.html: placeholders remain" in problem for problem in verify_site.verify())
 
 
+def test_files_github_pages_would_drop_block_publishing(tmp_path, monkeypatch):
+    copy = tmp_path / "site"
+    shutil.copytree(PROJECT / "site", copy)
+    (copy / "style.css").rename(copy / "_style.css")
+    monkeypatch.setattr(verify_site, "SITE", copy)
+    problems = verify_site.verify()
+    assert any("_style.css" in problem and "GitHub Pages" in problem for problem in problems)
+    assert any("missing asset style.css" in problem for problem in problems)
+
+
 def test_site_and_manifest_name_the_same_publisher_and_contact():
     manifest = json.loads((PROJECT / "plugins/openai/horosa/plugin.json").read_text(encoding="utf-8"))
     name, email = manifest["author"]["name"], manifest["author"]["email"]

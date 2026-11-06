@@ -1,1 +1,1 @@
-占位图标（几何七点纹样，正方形 SVG）。正式品牌图标由用户提供后替换；文件名与 plugin.json 里的引用保持一致即可。
+星阙品牌图标：黑底月牙加圆点。轮廓从 Horosa-Public 的 `Horosa_Desktop_Installer/assets/icon-source.png` 描出，`-dark` 版多一圈细边，避免在深色界面里和背景融在一起。
