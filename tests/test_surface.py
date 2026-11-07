@@ -212,6 +212,41 @@ def test_no_data_files_and_no_metadata_or_raw_objects(public_server):
         assert f'"{key}"' not in text
 
 
+def _envelope_with(title: str, text: str) -> dict:
+    raw = envelope()
+    raw["data"]["export_snapshot"]["sections"] = [{"title": title, "body": text, "included": True}]
+    return raw
+
+
+def test_server_instructions_rule_out_softened_lifespan_readings():
+    from horosa_public.server import PUBLIC_INSTRUCTIONS
+
+    # OpenAI's guidance: keep the most important details in the first 512 characters.
+    head = PUBLIC_INSTRUCTIONS[:512]
+    assert "Never offer, perform or imply lifespan, illness or death readings" in head
+    assert "do not suggest longevity indicators" in head
+    assert "Answer from the tool result alone" in head
+
+
+def test_one_denied_line_removes_that_line_and_keeps_the_chart():
+    text = "太阳 (10th; -)：23˚双子40分\n死亡点 (6th; -)：22˚摩羯46分；位于 土 界\n月亮 (8th; -)：8˚双鱼59分"
+    result = render_public_result("solarreturn", _envelope_with("时段盘配置", text))
+    assert [section.title for section in result.sections] == ["时段盘配置"]
+    assert result.sections[0].text == "太阳 (10th; -)：23˚双子40分\n月亮 (8th; -)：8˚双鱼59分"
+    assert any("omitted" in warning for warning in result.warnings)
+
+
+def test_a_section_with_only_denied_lines_disappears():
+    result = render_public_result("chart", _envelope_with("星盘", "死亡点：22˚摩羯\n疾病点：27˚天秤"))
+    assert result.sections == []
+
+
+def test_a_denied_title_still_removes_the_whole_section():
+    result = render_public_result("chart", _envelope_with("寿命判读", "寿命档以外的普通文字\n另一行"))
+    assert result.sections == []
+    assert any("omitted" in warning for warning in result.warnings)
+
+
 @pytest.mark.parametrize("danger", ["寿命格局", "寿命判读", "Jaimini 三对法寿命", "Āyurdāya 寿命基础", "疾病判断", "death prediction"])
 def test_safety_sections_and_embedded_interpretations_removed(danger):
     raw = envelope()

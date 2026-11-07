@@ -498,16 +498,22 @@ def render_public_result(tool_id: str, envelope: Any, *, place_synthesized: bool
         if place_synthesized:
             # A synthesized place (timezone meridian) must never be echoed as if it were real.
             text = _strip_place_echo(text).strip()
-        if _denied(title, "denied_section_patterns") or _denied(text, "denied_content_patterns"):
+        if _denied(title, "denied_section_patterns"):
             filtered = True
             continue
+        # One denied line must not take a whole chart with it, so content is judged line by line.
+        lines = text.splitlines()
+        kept = [line for line in lines if not _denied(line, "denied_content_patterns")]
+        if len(kept) != len(lines):
+            filtered = True
+            text = "\n".join(kept).strip()
         if text:
             sections.append(PublicSection(title=title, text=text))
     warnings: list[str] = list(extra_warnings)
     if raw.get("warnings"):
         warnings.append("引擎报告了计算警告；请谨慎使用可能不完整的结果。 / The engine reported calculation warnings; the result may be incomplete.")
     if filtered:
-        warnings.append("公共版本已省略不适合一般受众的判读段落。 / Interpretive sections unsuitable for a general audience were omitted.")
+        warnings.append("公共版本已省略不适合一般受众的判读内容。 / Interpretive content unsuitable for a general audience was omitted.")
     if metadata_omitted:
         warnings.append("公共版本已省略依赖导出时刻的附加信息。 / Additional context based on the export time was omitted.")
     result = PublicResult(ok=True, tool=public_tools()[tool_id]["name"], sections=sections, technique_card=_card(tool_id, data.get("technique_card"), len(sections)), warnings=warnings)

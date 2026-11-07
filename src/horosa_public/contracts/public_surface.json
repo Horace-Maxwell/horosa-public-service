@@ -898,7 +898,7 @@
   "output_measurement": {
     "status": "fixture replay measured; full Linux live matrix pending P2",
     "basis": "Eight repository golden/recorded snapshot samples; includes two MCP copies and JSON quoting. This is not an all-tool maximum or directory compliance approval.",
-    "max_measured_public_mcp_result_bytes": 47534,
+    "max_measured_public_mcp_result_bytes": 64308,
     "cap_rationale": "64 KiB limits anonymous response load, leaves room above the recorded sample maximum, and truncates larger results with a warning.",
     "samples": [
       {
@@ -906,8 +906,8 @@
         "fixture": "tests/fixtures/export_snapshots/astrochart_classical_live_snapshot.txt",
         "sha256": "cf3308c4c62a650c2f9e8f7606efe42f5e8563b68b4c48b8b92d743e5d225fc2",
         "snapshot_utf8_bytes": 31131,
-        "public_mcp_result_bytes": 47534,
-        "public_sections": 8
+        "public_mcp_result_bytes": 64308,
+        "public_sections": 11
       },
       {
         "tool": "bazi_birth",

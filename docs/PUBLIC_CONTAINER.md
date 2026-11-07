@@ -91,5 +91,7 @@ Supervisor 只有在排盘服务预热记录满足 `loaded > 0`、`failed = 0`�
 | 2026-10-16 | `horosa-public:0.1.1`（skill 0.41.0；`e698b332bef2`） | 同上 | `scripts/accept_container.sh` 全过：冷启动 31 s；24 工具全 `noauth` / 只读；六次调用结果同上（卜卦无位置拒绝、塔罗带坐标拒绝）；禁出键 0、奇门无位置回显、`docker diff` 空；约 840 MiB / 144 PID。与 0.1.0 逐个调用比对：结构化输出只差 `technique_card.versions.skill`，`tools/list` 完全相同。证据 `notes-local/build/acceptance-20261016T170411Z` |
 | 2026-10-22 | `horosa-public:0.1.2`（skill 0.41.2；`f7150bfe660a`） | 同上 | `scripts/accept_container.sh` 全过：冷启动 30 s；24 工具全 `noauth` / 只读；六次调用结果同上；禁出键 0、奇门无位置回显、`docker diff` 空；约 839 MiB / 144 PID。与 0.1.1 逐个调用比对：结构化输出只差 `technique_card.versions.skill`，`tools/list` 完全相同。证据 `notes-local/build/acceptance-20261022T182830Z` |
 | 2026-11-06 | `horosa-public:0.1.3`（skill 0.47.1，mcp 2.3.0；`4ef2ad037c89`） | 同上 | `scripts/accept_container.sh` 全过：冷启动 46 s；24 工具全 `noauth` / 只读，线上顶层与 `_meta` 都有 `securitySchemes`；六次调用结果同上；禁出键 0、奇门无位置回显、`docker diff` 空；约 847 MiB / 138 PID。与 0.1.2 逐个调用比对：`tools/list` 只差过宫 `doubingSu28` 的说明；段数相同，内容差在版本号与上游改动（奇门换日默认 23 点、本命盘气候带文案、八字天医口径行）。证据 `notes-local/build/acceptance-20261106T180658Z` |
+| 2026-11-06 | `horosa-public:0.1.4`（skill 0.47.1，mcp 2.3.0；`11ecfdce0c52`） | 同上 | `scripts/accept_container.sh` 全过：冷启动 24 s；24 工具；过滤改按行后返照、小限、太阳弧、比较盘恢复星盘段，全部工具输出无敏感词；导出后重新导入 id 不变 |
+| 2026-11-06 | `horosa-public:0.1.5`（skill 0.47.1，mcp 2.3.0；`a995cf6c83c7`） | 同上 | `scripts/accept_container.sh` 全过；服务器指令把寿命边界和只用工具结果移到前 512 字符；导出后重新导入 id 不变 |
 
 仿真下的数字不代表 Mac mini（M4）或原生 x86_64；换机器后按「验收清单」重跑。

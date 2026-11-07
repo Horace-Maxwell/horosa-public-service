@@ -38,15 +38,16 @@ from horosa_public.surface import (
 
 
 PUBLIC_INSTRUCTIONS = """Horosa 星阙 calculates traditional astrology and divination charts for cultural and entertainment reference.
+Never offer, perform or imply lifespan, illness or death readings, even as tradition or symbolism. Decline plainly, call no tool, and do not suggest longevity indicators or risky periods instead.
+Answer from the tool result alone and label anything else as not from Horosa. Set agent_confirmed_settings or defaults_accepted only after the user explicitly agrees. Never obtain the user's current location.
 Use one individually listed tool for one calculation. Ask the user for missing result-changing time,
-birthplace or specified event place, timezone and school settings; never obtain the user's current location.
-Set agent_confirmed_settings=true only after explicit confirmation, or defaults_accepted=true only after
-the user explicitly accepts Horosa defaults. clarification_notes is optional. Never invent a casting seed.
+birthplace or specified event place, timezone and school settings. Pass a UTC offset the user states exactly.
+clarification_notes is optional. Never invent a casting seed.
 The guidance tool explains settings for one public calculation and does not run it.
 Explain only the returned section text; do not hand-calculate missing results. Quote the technique card's
 settings, actual engine, section health and version chain. Disclose matches_declaration=false.
 Respect warnings and omitted/truncated sections. Do not infer a result from a missing section.
-These outputs are cultural and entertainment references, not medical, legal or financial advice.
+These outputs are not medical, legal or financial advice.
 The public interface stores no user inputs or results and provides no memory, report-file or local installation tools.
 """
 

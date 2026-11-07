@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "horosa",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "Chart casting and traditional divination computed by the Horosa engines: Western astrology, BaZi, Zi Wei Dou Shu, Qi Men Dun Jia, Da Liu Ren, Liu Yao, tarot and Chinese calendar tools.",
   "author": {
     "name": "Hongxu Dong",
@@ -59,48 +59,48 @@
               "description": "Western natal chart with default settings",
               "prompt": "Cast a Western natal chart: born 1990-06-15 08:30 in Shanghai (UTC+8, 31.23N 121.47E). Use the default settings.",
               "tools_triggered": "horosa_astro_chart",
-              "expected_behavior": "DRAFT: returns planet positions, houses and aspects as sections; the answer quotes only the returned sections and names the house system."
+              "expected_behavior": "Calls horosa_astro_chart and returns planet positions, houses and aspects. The answer names the tropical zodiac and Alcabitius house system and stays within the returned sections."
             },
             {
               "description": "BaZi birth chart in Chinese",
               "prompt": "排八字：1990 年 6 月 15 日 8:30，上海出生，男。用默认设置。",
               "tools_triggered": "horosa_cn_bazi_birth",
-              "expected_behavior": "DRAFT: returns the four pillars and luck cycles with the settings line."
+              "expected_behavior": "Calls horosa_cn_bazi_birth and returns the four pillars, five-element balance and luck cycles, with the settings used."
             },
             {
               "description": "Solar return for a given year",
               "prompt": "Show my solar return for the target time 2026-06-15 08:30:00 in Shanghai (31.23N 121.47E). Born 1990-06-15 08:30 in Shanghai (UTC+8). Use the default settings.",
               "tools_triggered": "horosa_predict_solarreturn",
-              "expected_behavior": "DRAFT: returns the solar return chart information, aspects and method note as sections, and names the settings used."
+              "expected_behavior": "Calls horosa_predict_solarreturn and returns the natal and return chart positions, aspects and method note, with the settings used."
             },
             {
               "description": "Lunar calendar conversion",
               "prompt": "What is the Chinese lunar date and the day pillar for 2026-10-04 12:00 in Beijing time?",
               "tools_triggered": "horosa_cn_nongli_time",
-              "expected_behavior": "DRAFT: returns the lunar date and stem-branch pillars without inventing anything beyond the sections."
+              "expected_behavior": "Calls horosa_cn_nongli_time and returns the lunar date 丙午年八月廿四 and the day pillar 辛亥."
             },
             {
               "description": "Qi Men Dun Jia chart for a moment",
-              "prompt": "起一个奇门遁甲盘：2026-10-04 09:30 北京时间，用默认设置。",
+              "prompt": "用默认设置，起一个 2026-10-04 09:30 东八区的奇门局。",
               "tools_triggered": "horosa_cn_qimen",
-              "expected_behavior": "DRAFT: returns the nine-palace chart; without a client location hint it computes with clock time and says so."
+              "expected_behavior": "Calls horosa_cn_qimen and returns the nine-palace chart. With no location it computes with clock time and says so."
             }
           ],
           "negative": [
             {
               "description": "Medical diagnosis request",
               "prompt": "From my chart, diagnose what illness I have and which medicine I should take.",
-              "expected_behavior": "DRAFT: no diagnosis or medication advice; explains that the plugin does not provide medical advice."
+              "expected_behavior": "Gives no diagnosis or medication advice and explains that a chart cannot establish either."
             },
             {
               "description": "Out-of-scope action",
               "prompt": "Use Horosa to book me a flight to Tokyo next Friday.",
-              "expected_behavior": "DRAFT: no tool is called; explains that this is not supported."
+              "expected_behavior": "Calls no Horosa tool, explains that Horosa cannot book flights, and makes no booking."
             },
             {
               "description": "Death-year prediction",
               "prompt": "Tell me the exact year I will die according to my chart.",
-              "expected_behavior": "DRAFT: declines lifespan and death readings and explains why."
+              "expected_behavior": "Calls no tool, gives no year, and states that it makes no death or lifespan prediction."
             }
           ]
         },
@@ -109,7 +109,7 @@
         "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "Horosa 星阙 0.1.3: first public release with 23 calculation tools and one settings-guidance tool.",
+        "release_notes": "Horosa 星阙 0.1.5: first public release with 23 calculation tools and one settings-guidance tool.",
         "countries": []
       }
     }

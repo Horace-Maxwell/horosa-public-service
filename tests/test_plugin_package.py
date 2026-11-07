@@ -46,12 +46,20 @@ def test_sources_are_blocked_until_the_human_gates_are_filled():
         builder.verify(SOURCE, allow_draft_cases=True)
 
 
-def test_filled_sources_verify_and_build_with_draft_cases_only_when_allowed(filled, tmp_path):
+def test_a_draft_case_blocks_the_package_unless_allowed(filled):
+    def add_draft(data):
+        case = data["extensions"]["com.openai"]["review"]["test_cases"]["positive"][0]
+        case["expected_behavior"] = "DRAFT: " + case["expected_behavior"]
+    _mutate(filled, add_draft)
     with pytest.raises(builder.PluginError, match="drafts"):
         builder.verify(filled)
-    summary = builder.verify(filled, allow_draft_cases=True)
-    assert summary["server"] == "https://mcp.horosa.org/mcp" and summary["draft_cases"] == 8
-    archive = builder.build(filled, tmp_path / "out" / "plugin.zip", allow_draft_cases=True)
+    assert builder.verify(filled, allow_draft_cases=True)["draft_cases"] == 1
+
+
+def test_filled_sources_verify_and_build(filled, tmp_path):
+    summary = builder.verify(filled)
+    assert summary["server"] == "https://mcp.horosa.org/mcp" and summary["draft_cases"] == 0
+    archive = builder.build(filled, tmp_path / "out" / "plugin.zip")
     names = zipfile.ZipFile(archive).namelist()
     assert "horosa/plugin.json" in names and "horosa/mcp.json" in names and "horosa/skills/horosa/SKILL.md" in names
     assert all(name.startswith("horosa/") for name in names) and len(names) < 50

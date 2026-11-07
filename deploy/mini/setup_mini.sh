@@ -45,4 +45,4 @@ docker --context colima-horosa-plugin info --format '虚拟机里的 Docker：{{
 
 say "完成"
 echo "下一步：bash \"$(dirname "$0")/load_image.sh\" <镜像 .tar.gz 的路径>   —— 校验并导入镜像"
-echo "然后：  bash \"$(dirname "$0")/run_container.sh\" horosa-public:0.1.3   —— 起容器（只绑本机回环）"
+echo "然后：  bash \"$(dirname "$0")/run_container.sh\" horosa-public:0.1.5   —— 起容器（只绑本机回环）"

@@ -5,4 +5,4 @@ layered on from outside with a service subclass and inert stand-ins for the memo
 manager and the trace recorder (see ``horosa_public.service``).
 """
 
-__version__ = "0.1.3"
+__version__ = "0.1.5"

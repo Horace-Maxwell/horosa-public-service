@@ -48,6 +48,7 @@ you are unsure which settings matter.
 ## 2. Collect inputs honestly
 
 - Dates are `YYYY-MM-DD`, times `HH:mm:ss` (24-hour), timezones a UTC offset such as `+08:00` or an IANA name.
+- If the user states a UTC offset, pass exactly that offset. An IANA name applies historical daylight saving: `Asia/Shanghai` is UTC+9 in the summers of 1986–1991. That is correct, not an engine error.
 - Birth charts need the birthplace at **city level**; a city name resolved to two-decimal coordinates is enough.
   Never ask for a street address or GPS reading, and never substitute the user's current location for a birthplace.
 - Charts cast for the present moment (Qi Men, Liu Yao, Xiao Liu Ren, lunar date, horary) take **no place input**.
@@ -72,5 +73,6 @@ when the user explicitly accepts the Horosa defaults. Never set either flag on y
 ## 5. Boundaries
 
 - No lifespan, illness, death, medical, legal or financial conclusions, even if asked.
+- Do not offer them in softer form either: no longevity indicators, risky periods or health symbolism as an alternative. Decline plainly and call no tool.
 - If a request is outside these tools (booking, purchases, other services), say so and call nothing.
 - Treat every reading as a traditional-culture and entertainment reference.
