@@ -228,6 +228,35 @@ def test_server_instructions_rule_out_softened_lifespan_readings():
     assert "Answer from the tool result alone" in head
 
 
+def test_every_tool_description_matches_its_schema_and_reads_in_english():
+    import re
+
+    def walk(properties):
+        for key, value in properties.items():
+            yield key, value
+            yield from walk(value.get("properties") or {})
+            yield from walk((value.get("items") or {}).get("properties") or {})
+
+    for tool_id, item in public_tools().items():
+        schema = public_input_schema(tool_id)
+        place_fields = {"lat", "lon"} & set(schema["properties"])
+        if not place_fields:
+            for word in ("place", "location"):
+                claim = re.sub(r"(no place input|coarse location|no location is available|none is available)", "", item["description"], flags=re.I)
+                assert word not in claim.lower(), (tool_id, item["description"])
+        for key, value in walk(schema["properties"]):
+            text = value.get("description", "")
+            assert text and not re.search(r"[\u4e00-\u9fff]", text), (tool_id, key, text)
+            assert "calculation setting." not in text, (tool_id, key, text)
+            assert "guidance" not in text, (tool_id, key, text)
+            if key in schema.get("required", []):
+                assert "default" not in text.lower(), (tool_id, key, text)
+
+
+def test_health_and_pregnancy_question_categories_are_not_public():
+    assert "zhanCategory" not in public_input_schema("liureng_gods")["properties"]
+
+
 def test_one_denied_line_removes_that_line_and_keeps_the_chart():
     text = "太阳 (10th; -)：23˚双子40分\n死亡点 (6th; -)：22˚摩羯46分；位于 土 界\n月亮 (8th; -)：8˚双鱼59分"
     result = render_public_result("solarreturn", _envelope_with("时段盘配置", text))

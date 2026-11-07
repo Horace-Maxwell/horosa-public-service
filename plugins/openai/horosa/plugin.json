@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "horosa",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Chart casting and traditional divination computed by the Horosa engines: Western astrology, BaZi, Zi Wei Dou Shu, Qi Men Dun Jia, Da Liu Ren, Liu Yao, tarot and Chinese calendar tools.",
   "author": {
     "name": "Hongxu Dong",
@@ -24,7 +24,7 @@
       "interface": {
         "displayName": "Horosa 星阙",
         "shortDescription": "Astrology, Bazi & divination",
-        "longDescription": "Horosa 星阙 computes traditional astrology and divination charts from the birth or event data you provide, using the open-source Horosa engines, and returns the computed sections for ChatGPT to explain.\n\nWhat it does: Western natal charts and relationship charts, Indian (Jyotish) charts, the Chinese seven-luminaries chart, horary and electional charts, predictive techniques (solar and lunar returns, annual profections, firdaria, secondary progressions, solar arc directions, planetary ephemeris), and Chinese techniques: BaZi (Four Pillars), Zi Wei Dou Shu, Qi Men Dun Jia, Da Liu Ren, Liu Yao (six-line divination), Xiao Liu Ren, tarot, lunar calendar conversion, the daily almanac and the yearly solar terms.\n\nHow it works: each technique is a separate read-only tool. Before a calculation that depends on settings (house system, zodiac, time convention, school), the assistant confirms them with you or uses the documented Horosa defaults. Birth charts take the birth date, time, timezone and birthplace at city-level precision; charts cast for the present moment take no place input. Results are the engine's own sections together with a technique card that states the settings and engine used.\n\nLimits: outputs are cultural and entertainment references, not medical, legal or financial advice; the plugin does not give lifespan, illness or death readings. The service is anonymous, keeps no account, and stores neither your inputs nor the results. Source code is published under AGPL-3.0.",
+        "longDescription": "Horosa 星阙 computes traditional astrology and divination charts from the birth or event data you provide, using the open-source Horosa engines, and returns the computed sections for ChatGPT to explain.\n\nWhat it does: Western natal charts and relationship charts, Indian (Jyotish) charts, the Chinese seven-luminaries chart, horary and electional charts, predictive techniques (solar and lunar returns, annual profections, firdaria, secondary progressions, solar arc directions, ephemeris events), and Chinese techniques: BaZi (Four Pillars), Zi Wei Dou Shu, Qi Men Dun Jia, Da Liu Ren, Liu Yao (six-line divination), Xiao Liu Ren, tarot, lunar calendar conversion, the daily almanac and the yearly solar terms.\n\nHow it works: each technique is a separate read-only tool. Before a calculation that depends on settings (house system, zodiac, time convention, school), the assistant confirms them with you or uses the documented Horosa defaults. Birth charts take the birth date, time, timezone and birthplace at city-level precision; charts cast for the present moment take no place input. Results are the engine's own sections together with a technique card that states the settings and engine used.\n\nLimits: outputs are cultural and entertainment references, not medical, legal or financial advice; the plugin does not give lifespan, illness or death readings. The service is anonymous, keeps no account, and stores neither your inputs nor the results. Source code is published under AGPL-3.0.",
         "developerName": "Hongxu Dong",
         "category": "Entertainment",
         "capabilities": [
@@ -35,7 +35,7 @@
           "Cast Qi Men Dun Jia, Da Liu Ren, Liu Yao and Xiao Liu Ren charts",
           "Draw a tarot spread with a deterministic engine",
           "Convert dates to the Chinese lunar calendar, almanac and solar terms",
-          "List planetary ephemeris positions for a date range"
+          "List ephemeris events such as ingresses, stations, lunations and eclipses for a date range"
         ],
         "websiteURL": "https://horosa.org/",
         "supportURL": "https://horosa.org/support",
@@ -109,7 +109,7 @@
         "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "Horosa 星阙 0.1.5: first public release with 23 calculation tools and one settings-guidance tool.",
+        "release_notes": "Horosa 星阙 0.1.6: first public release with 23 calculation tools and one settings-guidance tool.",
         "countries": []
       }
     }

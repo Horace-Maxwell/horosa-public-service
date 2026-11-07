@@ -120,7 +120,7 @@
       "id": "horary",
       "name": "horosa_chart_horary",
       "title": "Horary chart / 卜卦占星",
-      "description": "Calculate a horary chart for an explicitly supplied event time and place.",
+      "description": "Calculate a horary chart for an explicit question time. It takes no place input: it uses the coarse location the client provides, and returns an error without calculating when no location is available.",
       "field_groups": [
         "moment",
         "gate"
@@ -141,7 +141,10 @@
       ],
       "required": [],
       "place": "client",
-      "place_fallback": "required"
+      "place_fallback": "required",
+      "descriptions": {
+        "school": "Horary school, which sets the house and term systems. Defaults to classical."
+      }
     },
     {
       "id": "election",
@@ -167,7 +170,8 @@
       "place": "user",
       "descriptions": {
         "lat": "Latitude of the place where the elected event will happen, city-level precision; not the user's current location.",
-        "lon": "Longitude of the place where the elected event will happen, city-level precision; not the user's current location."
+        "lon": "Longitude of the place where the elected event will happen, city-level precision; not the user's current location.",
+        "school": "Electional school: modern_main (default), hellenistic, persian, renaissance or modern_revival."
       }
     },
     {
@@ -357,7 +361,7 @@
       "id": "ephemeris",
       "name": "horosa_predict_ephemeris",
       "title": "Planetary ephemeris / 星历",
-      "description": "Calculate planetary positions in an explicit bounded date range, up to 31 days.",
+      "description": "List ephemeris events (sign ingresses, stations, lunations and eclipses) and transits to a birth chart for an explicit date range of up to 31 days.",
       "field_groups": [
         "birth",
         "gate"
@@ -410,7 +414,8 @@
       ],
       "descriptions": {
         "lat": "Optional birthplace latitude; only used for true solar time. Omit to compute with clock time. City-level precision; not the user's current location.",
-        "lon": "Optional birthplace longitude; only used for true solar time. Omit to compute with clock time. City-level precision; not the user's current location."
+        "lon": "Optional birthplace longitude; only used for true solar time. Omit to compute with clock time. City-level precision; not the user's current location.",
+        "school": "BaZi school for the structure and useful-god sections. Leave unset for the Horosa default."
       }
     },
     {
@@ -446,7 +451,7 @@
       "id": "qimen",
       "name": "horosa_cn_qimen",
       "title": "Qimen Dunjia chart / 奇门遁甲",
-      "description": "Calculate a Qimen Dunjia chart for an explicitly supplied event time and location.",
+      "description": "Calculate a Qimen Dunjia chart for an explicit event date, time and timezone. It takes no place input: it uses the coarse location the client provides, or clock time when none is available.",
       "field_groups": [
         "moment",
         "gate"
@@ -465,7 +470,7 @@
       "id": "liureng_gods",
       "name": "horosa_cn_liureng_gods",
       "title": "Da Liu Ren chart / 大六壬",
-      "description": "Calculate a Da Liu Ren event chart with confirmed nobleman method and explicit time and place.",
+      "description": "Calculate a Da Liu Ren event chart for an explicit date, time and timezone. A city-level place is optional and only affects true solar time and the day or night setting.",
       "field_groups": [
         "moment",
         "gate"
@@ -475,8 +480,7 @@
         "lateZiHourUseNextDay",
         "yue",
         "isDiurnal",
-        "guirengType",
-        "zhanCategory"
+        "guirengType"
       ],
       "required": [],
       "place": "user_optional",
@@ -518,7 +522,7 @@
       "id": "xiaoliuren",
       "name": "horosa_cn_xiaoliuren",
       "title": "Xiao Liu Ren / 小六壬",
-      "description": "Calculate Xiao Liu Ren from three supplied numbers or an explicit event time and place.",
+      "description": "Calculate Xiao Liu Ren from three numbers the user supplies, or from an explicit event date, time and timezone. It takes no place input.",
       "field_groups": [
         "moment",
         "gate"
@@ -534,13 +538,16 @@
       ],
       "required": [],
       "place": "client",
-      "place_fallback": "clock_time"
+      "place_fallback": "clock_time",
+      "descriptions": {
+        "school": "Xiao Liu Ren school. Leave unset for the Horosa default."
+      }
     },
     {
       "id": "tarot",
       "name": "horosa_cn_tarot",
       "title": "Tarot reading / 塔罗",
-      "description": "Draw a reproducible Tarot spread from a user-supplied seed or explicit casting time and place. Never invent a seed.",
+      "description": "Draw a reproducible Tarot spread from the casting date, time and timezone, or from a seed the user supplies. It takes no place input. Never invent a seed.",
       "field_groups": [
         "moment",
         "gate"

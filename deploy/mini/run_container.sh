@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Start (or replace) the public MCP container on the Mac mini: loopback-only, read-only, non-root, auto-restart.
-# Usage: bash deploy/mini/run_container.sh <image-tag> [port]     e.g. bash deploy/mini/run_container.sh horosa-public:0.1.5 8765
+# Usage: bash deploy/mini/run_container.sh <image-tag> [port]     e.g. bash deploy/mini/run_container.sh horosa-public:0.1.6 8765
 # Secrets: put the OpenAI domain-verification token in ~/.config/horosa-public/challenge (one line); never pass it on the command line.
 set -euo pipefail
 
-IMAGE="${1:?image tag, e.g. horosa-public:0.1.5}"
+IMAGE="${1:?image tag, e.g. horosa-public:0.1.6}"
 PORT="${2:-8765}"
 NAME="horosa-public"
 ALLOWED_HOSTS="${HOROSA_MCP_ALLOWED_HOSTS:-mcp.horosa.org}"

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # 镜像验收（docs/PUBLIC_CONTAINER.md「验收清单」的第 2–4 条）：冷启动、tools/list、六次调用、输出键与回显检查、docker diff。
-# 用法：bash scripts/accept_container.sh <image-tag>     例：bash scripts/accept_container.sh horosa-public:0.1.5
+# 用法：bash scripts/accept_container.sh <image-tag>     例：bash scripts/accept_container.sh horosa-public:0.1.6
 # 只绑宿主回环的随机端口；只删除本脚本自己建的容器 horosa-public-accept。证据写到 notes-local/build/acceptance-<UTC 时间>/。
 set -euo pipefail
 
-IMAGE="${1:?image tag, e.g. horosa-public:0.1.5}"
+IMAGE="${1:?image tag, e.g. horosa-public:0.1.6}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 export DOCKER_CONTEXT="${DOCKER_CONTEXT:-colima-horosa-plugin}"
 TS="$(date -u +%Y%m%dT%H%M%SZ)"
