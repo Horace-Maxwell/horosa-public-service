@@ -30,7 +30,6 @@ def filled(tmp_path):
     copy = tmp_path / "horosa"
     shutil.copytree(SOURCE, copy)
     text = (copy / "plugin.json").read_text(encoding="utf-8")
-    text = text.replace("<DEMO_VIDEO_URL>", "https://example.org/demo")
     (copy / "plugin.json").write_text(text, encoding="utf-8")
     return copy
 
@@ -41,9 +40,15 @@ def _mutate(copy: Path, change) -> None:
     (copy / "plugin.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 
 
-def test_sources_are_blocked_until_the_human_gates_are_filled():
+def test_real_sources_are_ready_to_package():
+    assert builder.verify(SOURCE)["draft_cases"] == 0
+
+
+def test_a_placeholder_blocks_the_package(filled):
+    manifest = filled / "plugin.json"
+    manifest.write_text(manifest.read_text(encoding="utf-8").replace("Hongxu Dong", "<PUBLISHER_NAME>"), encoding="utf-8")
     with pytest.raises(builder.PluginError, match="placeholders"):
-        builder.verify(SOURCE, allow_draft_cases=True)
+        builder.verify(filled, allow_draft_cases=True)
 
 
 def test_a_draft_case_blocks_the_package_unless_allowed(filled):
