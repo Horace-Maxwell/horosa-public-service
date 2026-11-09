@@ -13,93 +13,217 @@
 <div class="sheet">
 <nav aria-label="网站导航 Site"><a href="/"><span>首页</span><span lang="en">Home</span></a><a href="/privacy" aria-current="page"><span>隐私</span><span lang="en">Privacy</span></a><a href="/terms"><span>条款</span><span lang="en">Terms</span></a><a href="/support"><span>支持</span><span lang="en">Support</span></a></nav>
 <h1>隐私政策<span lang="en">Privacy Policy</span></h1>
-<p class="meta">生效日期 2026-11-06，运营者 Hongxu Dong<span lang="en">Effective 2026-11-06. Operated by Hongxu Dong.</span></p>
+<p class="meta">生效日期 2026-11-09，运营者 Hongxu Dong<span lang="en">Effective 2026-11-09. Operated by Hongxu Dong.</span></p>
 </div>
 </header>
 <main id="content" class="sheet">
 <section class="clause">
 <p class="no">1</p>
 <div class="zh">
-<h2>我们处理哪些数据</h2>
-<p>当你通过 ChatGPT 或 Codex 使用 Horosa 星阙时，服务只收到完成一次计算所需的输入：出生或事件的日期、时间、时区，城市级精度的地点坐标（仅对需要地点的技法），以及可选的计算设置（如宫制、流派、性别设置、所问之事的简短文字）。服务不要求姓名、联系方式或账号，也不会索取你的当前位置；对「此时此地」类技法，客户端可能按你在 ChatGPT 中的设置提供粗略位置提示，服务只在计算中使用它。</p>
+<h2>适用范围</h2>
+<p>本政策说明 Horosa 星阙插件在 ChatGPT 与 Codex 中使用时，位于 <code>mcp.horosa.org</code> 的计算服务处理哪些数据、为什么处理、交给谁、保留多久，以及你能怎样控制。它也适用于本网站 <code>horosa.org</code> 和你联系我们时提供的信息。运营者是个人开发者 Hongxu Dong，联系方式见 <a href="/support">支持页</a>。</p>
 </div>
 <div class="en" lang="en">
-<h2>Data we process</h2>
-<p>When you use Horosa 星阙 through ChatGPT or Codex, the service receives only what one calculation needs: the date, time and timezone of the birth or event, city-level coordinates for techniques that need a place, and optional calculation settings (house system, school, a gender setting, a short question text). It asks for no name, contact details or account and never requests your current location; for here-and-now techniques the client may pass a coarse location hint according to your ChatGPT settings, which the service uses only for that calculation.</p>
+<h2>Scope</h2>
+<p>This policy explains what data the calculation service at <code>mcp.horosa.org</code> handles when you use the Horosa 星阙 plugin in ChatGPT or Codex, why, who receives it, how long it is kept and what control you have. It also covers this website, <code>horosa.org</code>, and information you send when you contact us. The operator is Hongxu Dong, an individual developer; contact details are on the <a href="/support">support page</a>.</p>
 </div>
 </section>
 <section class="clause">
 <p class="no">2</p>
 <div class="zh">
-<h2>我们如何使用</h2>
-<p>输入只用于即时计算并把结果返回给发出请求的客户端。我们不做画像、不做广告、不把数据出售或提供给第三方。</p>
+<h2>我们收到哪些数据</h2>
+<ul>
+<li><strong>计算输入</strong>：ChatGPT 按你的要求调用工具时，把你在对话中给出的内容填进工具参数发给服务。包括：出生或事件的日期、时间、时区；出生地或事件地点的坐标（城市级，服务收到后取整到 0.01°，约 1 公里）；合盘时两个人各自的出生资料；推运、返照等技法的目标日期与可选的目标地点；计算设置（如宫制、流派、命盘性别设置）；你给出的数字、卦码或随机种子；卜卦、六爻、小六壬、塔罗可选的问题文字；以及确认标记和可选的简短确认备注。每个工具具体收哪些字段，见文末附表。</li>
+<li><strong>粗略位置提示</strong>：如果你在 ChatGPT 中允许共享位置，ChatGPT 会随调用附带它推断的粗略位置（城市、地区、国家、时区和粗略经纬度）。服务只在按「此时此地」起盘的工具中（附表中注明）取其中的经纬度、取整到 0.01° 后用于计算，其余字段不读取。出生地永远不取自位置提示，服务也从不索取你的精确位置。</li>
+<li><strong>ChatGPT 附带的元数据</strong>：ChatGPT 还会随每次调用附带由 OpenAI 生成的匿名用户 ID、匿名会话 ID、匿名组织 ID、语言区域和客户端类型提示。服务收到这些数据，但不读取、不使用、不保存。</li>
+<li><strong>连接数据</strong>：ChatGPT 的调用由 OpenAI 的服务器发出，所以服务看不到你的 IP 地址；Codex 等客户端可能从你的设备直接连接，此时网络服务商 Cloudflare 会看到你的 IP 地址。服务进程不记录访问日志。</li>
+<li><strong>联系我们时</strong>：你发邮件时我们会收到你的邮箱地址和邮件内容；在 GitHub 提交问题时，内容按 GitHub 的规则公开。</li>
+<li><strong>访问本网站时</strong>：本站不使用 Cookie、统计或第三方脚本；托管方 GitHub Pages 会为安全和运维记录访问日志（如 IP 地址），我们收不到这些日志。</li>
+</ul>
+<p>我们不要求姓名、联系方式、账号、精确位置、支付信息、证件号码或健康信息。请不要在问题文字或确认备注里写姓名、联系方式、健康状况等敏感信息：计算用不到它们。只有在得到对方同意时，才提供他人的出生资料。</p>
 </div>
 <div class="en" lang="en">
-<h2>How we use it</h2>
-<p>Inputs are used only to compute the result and return it to the requesting client. No profiling, no advertising, no sale or sharing with third parties.</p>
+<h2>Data we receive</h2>
+<ul>
+<li><strong>Calculation inputs.</strong> When ChatGPT calls a tool at your request, it fills the tool's parameters with what you said in the conversation and sends them to the service. This covers the date, time and timezone of a birth or event; coordinates of the birthplace or event place (city level, rounded by the service to 0.01°, about 1 km); for relationship charts, each person's birth data; target dates and an optional target place for predictive techniques such as returns and progressions; calculation settings such as house system, school and the chart gender setting; numbers, hexagram codes or a random seed you give; optional question text for horary, Liu Yao, Xiao Liu Ren and tarot; and confirmation flags with an optional short confirmation note. The table at the end lists the exact fields of every tool.</li>
+<li><strong>Coarse location hint.</strong> If you allow location sharing in ChatGPT, ChatGPT attaches the coarse location it infers (city, region, country, timezone and approximate coordinates). Only for tools cast for "here and now" (marked in the table) does the service take the coordinates from that hint, round them to 0.01° and use them in the calculation; it does not read the other fields. A birthplace is never taken from the hint, and the service never asks for your precise location.</li>
+<li><strong>Metadata ChatGPT attaches.</strong> With every call ChatGPT also sends an anonymized user ID, an anonymized conversation ID and an anonymized organization ID generated by OpenAI, plus locale and client hints. The service receives them but does not read, use or keep them.</li>
+<li><strong>Connection data.</strong> ChatGPT's calls come from OpenAI's servers, so the service does not see your IP address. Clients such as Codex may connect from your device, in which case the network provider Cloudflare sees your IP address. The service keeps no access logs.</li>
+<li><strong>When you contact us.</strong> If you email us we receive your address and the message. Issues filed on GitHub are public under GitHub's rules.</li>
+<li><strong>When you visit this website.</strong> The site sets no cookies and runs no analytics or third-party scripts. Its host, GitHub Pages, keeps access logs such as IP addresses for security and operations; we do not receive those logs.</li>
+</ul>
+<p>We do not ask for names, contact details, accounts, precise location, payment details, government ID numbers or health information. Please keep names, contact details, health conditions and other sensitive details out of question text and notes: the calculation does not need them. Give another person's birth data only with their permission.</p>
 </div>
 </section>
 <section class="clause">
 <p class="no">3</p>
 <div class="zh">
-<h2>保留</h2>
-<p>服务不存储请求内容和结果：没有数据库，不写运行记录，不产生追踪日志；计算进程只在内存中暂存数据，进程结束即消失。服务进程不记录访问日志。网络代理服务商（Cloudflare）在转发请求时可能按其自身隐私政策短期保留连接元数据（如 IP 地址与时间）；我们不读取、不汇总这些记录。</p>
+<h2>工具返回什么</h2>
+<p>每个计算工具返回同一种结构：引擎计算出的盘面分段文字、一张技法卡（所用设置、引擎与版本）、必要的提示，出错时返回错误码和需要向你确认的事项；参数确认工具只返回设置说明。结果可能复述你给的日期、时间、取整后的坐标和问题文字。公共版本会删去寿命、疾病、死亡类判读；结果里没有运行编号、追踪编号或请求时间戳。结果只返回给发出调用的 ChatGPT 或 Codex 会话，随后成为你对话的一部分，由 OpenAI 按其政策和你的设置保存。</p>
 </div>
 <div class="en" lang="en">
-<h2>Retention</h2>
-<p>The service stores neither requests nor results: no database, no run records, no trace logs; the calculation processes hold data in memory only while computing. The service processes keep no access logs. The network proxy provider (Cloudflare) may retain connection metadata such as IP address and time for a short period under its own privacy policy; we do not read or aggregate those records.</p>
+<h2>What the tools return</h2>
+<p>Every calculation tool returns the same structure: the computed chart sections as text, a technique card (settings, engine and version used), any warnings, and on failure an error code with what needs confirming; the settings tool returns only an explanation of settings. Results may repeat the date, time, rounded coordinates and question text you gave. The public version removes lifespan, illness and death readings, and results contain no run IDs, trace IDs or request timestamps. Results go back only to the ChatGPT or Codex session that made the call, where they become part of your conversation and are kept by OpenAI under its policies and your settings.</p>
 </div>
 </section>
 <section class="clause">
 <p class="no">4</p>
 <div class="zh">
-<h2>接收方</h2>
-<p>请求经 OpenAI（ChatGPT / Codex）与 Cloudflare 的基础设施到达我们的服务器；这些服务商各自的隐私政策适用于它们处理的数据。我们不向其他任何方传输数据。</p>
+<h2>我们如何使用</h2>
+<p>计算输入和位置提示只用于完成这一次计算并返回结果；邮件只用于回复你。我们不做画像，不跨请求关联数据，不用于广告、统计分析或训练 AI 模型，不出售、出租或交换任何数据。</p>
 </div>
 <div class="en" lang="en">
-<h2>Recipients</h2>
-<p>Requests reach our server through the infrastructure of OpenAI (ChatGPT / Codex) and Cloudflare; each provider's own privacy policy applies to the data it handles. We send data to no one else.</p>
+<h2>How we use it</h2>
+<p>Calculation inputs and the location hint are used only to perform that one calculation and return the result; emails are used only to answer you. We do no profiling, do not link requests to each other, and do not use data for advertising, analytics or training AI models. We do not sell, rent or trade any data.</p>
 </div>
 </section>
 <section class="clause">
 <p class="no">5</p>
 <div class="zh">
-<h2>你的控制</h2>
-<p>因为我们不保留任何可识别你的数据，所以没有可供查询、更正或删除的记录。你可以随时在 ChatGPT 中停用或卸载本插件。</p>
+<h2>接收方</h2>
+<ul>
+<li><strong>OpenAI</strong>（ChatGPT / Codex）：替你发出调用并接收结果。</li>
+<li><strong>Cloudflare</strong>：网络服务商，负责 <code>mcp.horosa.org</code> 的 HTTPS 连接，并把请求经加密隧道转发到我们的服务器，在传输中经手请求和结果。</li>
+<li><strong>GitHub</strong>：托管本网站，以及你提交的问题。</li>
+<li><strong>Google</strong>（Gmail）：支持邮箱的邮件服务商。</li>
+</ul>
+<p>它们各自按自己的隐私政策处理所经手的数据。除此之外我们不向任何一方提供数据。如法律要求我们提供数据，我们能交出的只有当时仍持有的数据，计算服务本身不持有记录。</p>
 </div>
 <div class="en" lang="en">
-<h2>Your controls</h2>
-<p>Because we keep no data that identifies you, there are no records to look up, correct or delete. You can disable or uninstall the plugin in ChatGPT at any time.</p>
+<h2>Recipients</h2>
+<ul>
+<li><strong>OpenAI</strong> (ChatGPT / Codex), which makes calls on your behalf and receives the results.</li>
+<li><strong>Cloudflare</strong>, the network provider that serves the HTTPS connection for <code>mcp.horosa.org</code> and forwards requests through an encrypted tunnel to our server, handling requests and results in transit.</li>
+<li><strong>GitHub</strong>, which hosts this website and any issues you file.</li>
+<li><strong>Google</strong> (Gmail), the provider of the support mailbox.</li>
+</ul>
+<p>Each handles the data that passes through it under its own privacy policy. We give data to no one else. If the law requires us to hand over data, we can only provide what we still hold at that time; the calculation service itself holds no records.</p>
 </div>
 </section>
 <section class="clause">
 <p class="no">6</p>
 <div class="zh">
-<h2>未成年人</h2>
-<p>本服务面向 13 岁及以上用户，内容属传统文化与娱乐参考，不收集年龄信息。</p>
+<h2>保留期限</h2>
+<ul>
+<li><strong>计算输入、位置提示和结果</strong>：只在服务器内存中处理，从不写入磁盘、数据库或日志。计算引擎会把算过的结果暂存在内存缓存中，服务每天自动重启一次并清空它，所以最长保留 24 小时。</li>
+<li><strong>ChatGPT 附带的元数据</strong>：不保存，请求处理完即丢弃。</li>
+<li><strong>Cloudflare 的连接数据</strong>：按 Cloudflare 的政策保留；我们不调取、不导出。</li>
+<li><strong>ChatGPT 中的对话</strong>：由 OpenAI 按其政策和你的设置保存。</li>
+<li><strong>支持邮件</strong>：保留到问题处理完毕，最迟在最后一封往来邮件后 12 个月内删除；你可以要求提前删除。</li>
+<li><strong>GitHub 问题</strong>：公开保留，直到你或我们删除。</li>
+<li><strong>网站访问日志</strong>：由 GitHub 按其政策保留，我们收不到。</li>
+</ul>
 </div>
 <div class="en" lang="en">
-<h2>Minors</h2>
-<p>The service is for users aged 13 and over. Its content is a cultural and entertainment reference. We do not collect age information.</p>
+<h2>Retention</h2>
+<ul>
+<li><strong>Calculation inputs, location hint and results</strong>: processed only in the server's memory and never written to disk, a database or logs. The engine keeps computed results in an in-memory cache, which an automatic daily restart of the service clears, so they are kept for at most 24 hours.</li>
+<li><strong>Metadata ChatGPT attaches</strong>: not kept; discarded once the request is handled.</li>
+<li><strong>Cloudflare connection data</strong>: kept under Cloudflare's policy; we do not retrieve or export it.</li>
+<li><strong>Conversations in ChatGPT</strong>: kept by OpenAI under its policies and your settings.</li>
+<li><strong>Support emails</strong>: kept until the matter is resolved and deleted within 12 months of the last message; you can ask for earlier deletion.</li>
+<li><strong>GitHub issues</strong>: public until you or we delete them.</li>
+<li><strong>Website access logs</strong>: kept by GitHub under its policy; we do not receive them.</li>
+</ul>
 </div>
 </section>
 <section class="clause">
 <p class="no">7</p>
 <div class="zh">
+<h2>你的控制</h2>
+<ul>
+<li>服务只收到你在对话中给出的内容。八字、紫微、六壬的出生地或提问地点可以不给（改用钟表时间）；问题文字可以留空。</li>
+<li>在 ChatGPT 的设置中关闭位置共享，服务就收不到位置提示：按此时此地起盘的工具会改用钟表时间，卜卦会说明需要位置并停止。</li>
+<li>可以随时在 ChatGPT 中停用或卸载本插件，也可以删除包含结果的对话。</li>
+<li>计算服务不保存可识别你的记录，没有账号和资料可供查询、更正或导出；支持邮件可以要求查询或删除。</li>
+<li>有任何隐私问题，请按 <a href="/support">支持页</a> 的方式联系我们。</li>
+</ul>
+</div>
+<div class="en" lang="en">
+<h2>Your controls</h2>
+<ul>
+<li>The service receives only what you give in the conversation. For BaZi, Zi Wei and Da Liu Ren you can leave out the birthplace or place of the question (clock time is used instead), and question text can be left empty.</li>
+<li>Turn off location sharing in ChatGPT and the service receives no location hint: here-and-now tools fall back to clock time, and the horary tool says it needs a place and stops.</li>
+<li>You can disable or uninstall the plugin in ChatGPT at any time, and delete conversations that contain results.</li>
+<li>The calculation service keeps no records that identify you, so there is no account or profile to look up, correct or export; for support emails you can ask us to look up or delete them.</li>
+<li>For any privacy question, contact us as described on the <a href="/support">support page</a>.</li>
+</ul>
+</div>
+</section>
+<section class="clause">
+<p class="no">8</p>
+<div class="zh">
+<h2>安全与处理地点</h2>
+<p>所有连接都使用 HTTPS。计算服务运行在美国境内由运营者管理的一台服务器上，容器只读、以非 root 身份运行，不对外开放端口，只经 Cloudflare 加密隧道接收请求。OpenAI、Cloudflare、GitHub、Google 可能在其他国家处理所经手的数据。</p>
+</div>
+<div class="en" lang="en">
+<h2>Security and where data is processed</h2>
+<p>All connections use HTTPS. The calculation service runs on a server the operator manages in the United States, in a read-only container as a non-root user, with no open inbound ports; requests arrive only through Cloudflare's encrypted tunnel. OpenAI, Cloudflare, GitHub and Google may process the data they handle in other countries.</p>
+</div>
+</section>
+<section class="clause">
+<p class="no">9</p>
+<div class="zh">
+<h2>未成年人</h2>
+<p>本服务面向 13 岁及以上用户，内容属传统文化与娱乐参考。我们不收集年龄信息，也不会有意收集 13 岁以下儿童的数据。</p>
+</div>
+<div class="en" lang="en">
+<h2>Minors</h2>
+<p>The service is for users aged 13 and over, and its content is a cultural and entertainment reference. We do not collect age information and do not knowingly collect data from children under 13.</p>
+</div>
+</section>
+<section class="clause">
+<p class="no">10</p>
+<div class="zh">
 <h2>变更与联系</h2>
-<p>本政策如有变更会在本页更新并标注生效日期。联系方式见 <a href="/support">支持页</a>。</p>
+<p>工具的输入或数据处理方式改变时，我们会先更新本页并标注新的生效日期。联系方式见 <a href="/support">支持页</a>。</p>
 </div>
 <div class="en" lang="en">
 <h2>Changes and contact</h2>
-<p>Changes to this policy are posted on this page with a new effective date. See the <a href="/support">support page</a> for contact details.</p>
+<p>When tool inputs or data handling change, we update this page first and mark a new effective date. Contact details are on the <a href="/support">support page</a>.</p>
 </div>
+</section>
+<section class="appendix" id="tools">
+<h2>附表：各工具的输入<span lang="en">Table: inputs of each tool</span></h2>
+<p>所有工具另收确认标记 <code>agent_confirmed_settings</code>、<code>defaults_accepted</code> 和可选的确认备注 <code>clarification_notes</code>（自由文本）。服务拒绝表外的任何字段，包括姓名和 GPS 坐标。<span lang="en">Every tool also accepts the confirmation flags <code>agent_confirmed_settings</code> and <code>defaults_accepted</code> and an optional confirmation note, <code>clarification_notes</code> (free text). The service rejects any field not listed here, including names and GPS coordinates.</span></p>
+<!-- inventory:start (generated by scripts/privacy_inventory.py; do not edit by hand) -->
+<div class="inventory"><table>
+<caption>24 个工具各收哪些输入<span lang="en">Inputs each of the 24 tools accepts</span></caption>
+<thead><tr><th scope="col">工具<span lang="en">Tool</span></th><th scope="col">地点<span lang="en">Place</span></th><th scope="col">其他输入<span lang="en">Other inputs</span></th></tr></thead>
+<tbody>
+<tr><th scope="row"><code>horosa_astro_chart</code><br>西洋本命盘<span lang="en">Western natal chart</span></th><td>必填：出生地或事件地点，城市级<span lang="en">Required: birthplace or event place, city level</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>计算设置<span lang="en">calculation settings</span> <code>hsys, zodiacal, siderealAyanamsa, tradition, southchart, cnUnifiedZone</code></td></tr>
+<tr><th scope="row"><code>horosa_astro_relative</code><br>合盘<span lang="en">Relationship charts</span></th><td>必填：两个人的出生地，城市级<span lang="en">Required: both birthplaces, city level</span></td><td>两个人各自的出生日期、时间、时区和出生地<span lang="en">two people&#x27;s birth date, time, timezone and birthplace</span><br>计算设置<span lang="en">calculation settings</span> <code>hsys, zodiacal, siderealAyanamsa, relative</code></td></tr>
+<tr><th scope="row"><code>horosa_astro_india_chart</code><br>印度占星<span lang="en">Indian astrology chart</span></th><td>必填：出生地或事件地点，城市级<span lang="en">Required: birthplace or event place, city level</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>目标日期、时刻或时段<span lang="en">target date, time or range</span> <code>transitDate, tajakaYear</code><br>计算设置<span lang="en">calculation settings</span> <code>indiaHsys, indiaAyanamsa, indiaSchool, dashaSystem, dashaYearLength</code></td></tr>
+<tr><th scope="row"><code>horosa_astro_guolao_chart</code><br>七政四余<span lang="en">Seven luminaries chart</span></th><td>必填：出生地或事件地点，城市级<span lang="en">Required: birthplace or event place, city level</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>目标日期、时刻或时段<span lang="en">target date, time or range</span> <code>moiraTransitDate, moiraTransitTime</code><br>计算设置<span lang="en">calculation settings</span> <code>hsys, doubingSu28, southchart, guolaoTrueSolarTime</code></td></tr>
+<tr><th scope="row"><code>horosa_chart_horary</code><br>卜卦占星<span lang="en">Horary chart</span></th><td>不收地点；用 ChatGPT 的粗略位置（如你共享）<span lang="en">No place input; ChatGPT&#x27;s coarse location, if you share it</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>问题文字（自由文本，可选）<span lang="en">question text (free text, optional)</span> <code>questionText</code><br>计算设置<span lang="en">calculation settings</span> <code>hsys, zodiacal, siderealAyanamsa, tradition, southchart, cnUnifiedZone, category, school, considerationsMode, lotsSet, sincerityConfirmed</code></td></tr>
+<tr><th scope="row"><code>horosa_chart_election</code><br>择时单盘<span lang="en">Electional chart</span></th><td>必填：出生地或事件地点，城市级<span lang="en">Required: birthplace or event place, city level</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>计算设置<span lang="en">calculation settings</span> <code>hsys, zodiacal, siderealAyanamsa, tradition, southchart, cnUnifiedZone, topicId, school, tradeSide</code></td></tr>
+<tr><th scope="row"><code>horosa_predict_solarreturn</code><br>太阳返照<span lang="en">Solar return</span></th><td>必填：出生地或事件地点，城市级<span lang="en">Required: birthplace or event place, city level</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>目标日期、时刻或时段<span lang="en">target date, time or range</span> <code>datetime</code><br>可选的目标地点（城市级）与其时区<span lang="en">optional target place (city level) and its timezone</span> <code>dirZone, dirLat, dirLon</code><br>计算设置<span lang="en">calculation settings</span> <code>hsys, zodiacal, siderealAyanamsa, tradition, southchart, cnUnifiedZone</code></td></tr>
+<tr><th scope="row"><code>horosa_predict_lunarreturn</code><br>月亮返照<span lang="en">Lunar return</span></th><td>必填：出生地或事件地点，城市级<span lang="en">Required: birthplace or event place, city level</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>目标日期、时刻或时段<span lang="en">target date, time or range</span> <code>datetime</code><br>可选的目标地点（城市级）与其时区<span lang="en">optional target place (city level) and its timezone</span> <code>dirZone, dirLat, dirLon</code><br>计算设置<span lang="en">calculation settings</span> <code>hsys, zodiacal, siderealAyanamsa, tradition, southchart, cnUnifiedZone</code></td></tr>
+<tr><th scope="row"><code>horosa_predict_profection</code><br>小限推运<span lang="en">Annual profections</span></th><td>必填：出生地或事件地点，城市级<span lang="en">Required: birthplace or event place, city level</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>目标日期、时刻或时段<span lang="en">target date, time or range</span> <code>datetime</code><br>可选的目标地点（城市级）与其时区<span lang="en">optional target place (city level) and its timezone</span> <code>dirZone, dirLat, dirLon</code><br>计算设置<span lang="en">calculation settings</span> <code>hsys, zodiacal, siderealAyanamsa, tradition, southchart, cnUnifiedZone, profGrain, profStart</code></td></tr>
+<tr><th scope="row"><code>horosa_predict_firdaria</code><br>法达星限<span lang="en">Firdaria periods</span></th><td>必填：出生地或事件地点，城市级<span lang="en">Required: birthplace or event place, city level</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>计算设置<span lang="en">calculation settings</span> <code>hsys, zodiacal, siderealAyanamsa, tradition, southchart, cnUnifiedZone</code></td></tr>
+<tr><th scope="row"><code>horosa_predict_progressions</code><br>次限推运<span lang="en">Secondary progressions</span></th><td>必填：出生地或事件地点，城市级<span lang="en">Required: birthplace or event place, city level</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>目标日期、时刻或时段<span lang="en">target date, time or range</span> <code>datetime, targetDate, targetTime</code><br>可选的目标地点（城市级）与其时区<span lang="en">optional target place (city level) and its timezone</span> <code>dirZone, dirLat, dirLon</code><br>计算设置<span lang="en">calculation settings</span> <code>hsys, zodiacal, siderealAyanamsa, tradition, southchart, cnUnifiedZone, minorVariant</code></td></tr>
+<tr><th scope="row"><code>horosa_predict_solararc</code><br>太阳弧<span lang="en">Solar arc directions</span></th><td>必填：出生地或事件地点，城市级<span lang="en">Required: birthplace or event place, city level</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>目标日期、时刻或时段<span lang="en">target date, time or range</span> <code>datetime</code><br>可选的目标地点（城市级）与其时区<span lang="en">optional target place (city level) and its timezone</span> <code>dirZone, dirLat, dirLon</code><br>计算设置<span lang="en">calculation settings</span> <code>hsys, zodiacal, siderealAyanamsa, tradition, southchart, cnUnifiedZone</code></td></tr>
+<tr><th scope="row"><code>horosa_predict_ephemeris</code><br>星历<span lang="en">Planetary ephemeris</span></th><td>必填：出生地或事件地点，城市级<span lang="en">Required: birthplace or event place, city level</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>目标日期、时刻或时段<span lang="en">target date, time or range</span> <code>startDate, endDate</code><br>计算设置<span lang="en">calculation settings</span> <code>hsys, zodiacal, siderealAyanamsa, tradition, southchart, cnUnifiedZone, includeTransits, eclipseTimeMode</code></td></tr>
+<tr><th scope="row"><code>horosa_cn_bazi_birth</code><br>八字<span lang="en">Bazi birth chart</span></th><td>可选：出生地，只影响真太阳时<span lang="en">Optional: birthplace, only for true solar time</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>命盘性别设置<span lang="en">chart gender setting</span><br>计算设置<span lang="en">calculation settings</span> <code>timeAlg, after23NewDay, lateZiHourUseNextDay, southMonth, school, cangVersion, fenyeVersion, zodiacBoundary, period</code></td></tr>
+<tr><th scope="row"><code>horosa_cn_ziwei_birth</code><br>紫微斗数<span lang="en">Ziwei Doushu chart</span></th><td>可选：出生地，只影响真太阳时<span lang="en">Optional: birthplace, only for true solar time</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>命盘性别设置<span lang="en">chart gender setting</span><br>计算设置<span lang="en">calculation settings</span> <code>timeAlg, after23NewDay, lateZiHourUseNextDay, sihuaSchool, period</code></td></tr>
+<tr><th scope="row"><code>horosa_cn_qimen</code><br>奇门遁甲<span lang="en">Qimen Dunjia chart</span></th><td>不收地点；用 ChatGPT 的粗略位置（如你共享）<span lang="en">No place input; ChatGPT&#x27;s coarse location, if you share it</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>计算设置<span lang="en">calculation settings</span> <code>timeAlg, after23NewDay, lateZiHourUseNextDay, options</code></td></tr>
+<tr><th scope="row"><code>horosa_cn_liureng_gods</code><br>大六壬<span lang="en">Da Liu Ren chart</span></th><td>可选：提问地点；未给时用 ChatGPT 的粗略位置（如你共享）<span lang="en">Optional: place of the question; otherwise ChatGPT&#x27;s coarse location, if you share it</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>计算设置<span lang="en">calculation settings</span> <code>after23NewDay, lateZiHourUseNextDay, yue, isDiurnal, guirengType</code></td></tr>
+<tr><th scope="row"><code>horosa_cn_sixyao</code><br>六爻<span lang="en">Six-line divination</span></th><td>不收地点；用 ChatGPT 的粗略位置（如你共享）<span lang="en">No place input; ChatGPT&#x27;s coarse location, if you share it</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>问题文字（自由文本，可选）<span lang="en">question text (free text, optional)</span> <code>question</code><br>你给出的数字、卦码、爻或随机种子<span lang="en">numbers, hexagram codes, lines or a random seed you give</span> <code>gua_code, changed_code, lines</code><br>计算设置<span lang="en">calculation settings</span> <code>timeAlg, after23NewDay, lateZiHourUseNextDay, liuyaoSettings</code></td></tr>
+<tr><th scope="row"><code>horosa_cn_xiaoliuren</code><br>小六壬<span lang="en">Xiao Liu Ren</span></th><td>不收地点；用 ChatGPT 的粗略位置（如你共享）<span lang="en">No place input; ChatGPT&#x27;s coarse location, if you share it</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>问题文字（自由文本，可选）<span lang="en">question text (free text, optional)</span> <code>askEvent</code><br>你给出的数字、卦码、爻或随机种子<span lang="en">numbers, hexagram codes, lines or a random seed you give</span> <code>nums</code><br>计算设置<span lang="en">calculation settings</span> <code>timeAlg, after23NewDay, lateZiHourUseNextDay, school, showOneThree</code></td></tr>
+<tr><th scope="row"><code>horosa_cn_tarot</code><br>塔罗<span lang="en">Tarot reading</span></th><td>不用地点<span lang="en">No place</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>问题文字（自由文本，可选）<span lang="en">question text (free text, optional)</span> <code>question</code><br>你给出的数字、卦码、爻或随机种子<span lang="en">numbers, hexagram codes, lines or a random seed you give</span> <code>seed</code><br>计算设置<span lang="en">calculation settings</span> <code>spread, deck, usesReversals, dignities, variant, verdictMode</code></td></tr>
+<tr><th scope="row"><code>horosa_cn_nongli_time</code><br>农历换算<span lang="en">Chinese lunar calendar</span></th><td>不收地点；用 ChatGPT 的粗略位置（如你共享）<span lang="en">No place input; ChatGPT&#x27;s coarse location, if you share it</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>计算设置<span lang="en">calculation settings</span> <code>timeAlg, after23NewDay, lateZiHourUseNextDay, cnUnifiedZone</code></td></tr>
+<tr><th scope="row"><code>horosa_cn_huangli</code><br>黄历<span lang="en">Chinese almanac</span></th><td>不用地点<span lang="en">No place</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span></td></tr>
+<tr><th scope="row"><code>horosa_cn_jieqi_year</code><br>二十四节气<span lang="en">Yearly solar terms</span></th><td>必填：出生地或事件地点，城市级<span lang="en">Required: birthplace or event place, city level</span></td><td>日期、时间、时区<span lang="en">date, time, timezone</span><br>计算设置<span lang="en">calculation settings</span> <code>hsys, southchart</code></td></tr>
+<tr><th scope="row"><code>horosa_agent_guidance</code><br>参数确认<span lang="en">Confirm calculation settings</span></th><td>不用地点<span lang="en">No place</span></td><td>要说明的工具名<span lang="en">name of the tool to explain</span> <code>tool_name</code></td></tr>
+</tbody></table></div>
+<!-- inventory:end -->
 </section>
 </main>
 <footer class="colophon">
 <div class="sheet">
 <p class="owner">© <span class="publisher">Hongxu Dong</span></p>
-<p>本服务以 AGPL-3.0-only 发布，<a href="https://github.com/Horace-Maxwell/horosa-public-service">源码在 GitHub</a>。本站不使用 Cookie，不追踪访客。</p>
-<p lang="en">Published under AGPL-3.0-only. <a href="https://github.com/Horace-Maxwell/horosa-public-service">Source on GitHub</a>. This site sets no cookies and does not track visitors.</p>
+<p>本服务以 AGPL-3.0-only 发布，<a href="https://github.com/Horace-Maxwell/horosa-public-service">源码在 GitHub</a>。本站不使用 Cookie 和统计脚本；托管方 GitHub 的访问日志见 <a href="/privacy">隐私政策</a>。</p>
+<p lang="en">Published under AGPL-3.0-only. <a href="https://github.com/Horace-Maxwell/horosa-public-service">Source on GitHub</a>. This site sets no cookies and runs no analytics; for its host GitHub's access logs, see the <a href="/privacy">privacy policy</a>.</p>
 </div>
 </footer>
 </body>

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""Check the horosa.org pages before publishing: placeholders replaced, required statements present, one publisher name."""
+"""Check the horosa.org pages before publishing: placeholders replaced, required statements present, one publisher name,
+and the privacy page's per-tool table matching the public surface contract."""
 from __future__ import annotations
 
+import importlib.util
 import re
 import sys
 from pathlib import Path
@@ -9,8 +11,9 @@ from pathlib import Path
 SITE = Path(__file__).resolve().parents[1] / "site"
 PLACEHOLDER = re.compile(r"&lt;[A-Z_]{3,}&gt;|<[A-Z_]{3,}>")
 REQUIRED = {
-    "index.html": ["AGPL-3.0", "不存储", "娱乐参考"],
-    "privacy.html": ["不存储请求内容", "Cloudflare", "当前位置", "13 岁"],
+    "index.html": ["AGPL-3.0", "不把你的输入和结果写入磁盘", "最长 24 小时", "娱乐参考"],
+    "privacy.html": ["从不写入磁盘、数据库或日志", "最长保留 24 小时", "匿名用户 ID", "Cloudflare", "GitHub Pages", "Gmail", "13 岁",
+                     "inventory:start"],
     "terms.html": ["AGPL-3.0", "不构成医疗、法律、财务", "按现状提供"],
     "support.html": ["mailto:", "issues", "healthz"],
 }
@@ -43,7 +46,17 @@ def verify(*, allow_placeholders: bool = False) -> list[str]:
         problems.append(f"publisher name differs between pages: {sorted(publishers)}")
     if (SITE / "CNAME").read_text(encoding="utf-8").strip() != "horosa.org":
         problems.append("CNAME must be horosa.org")
+    if (SITE / "privacy.html").is_file():
+        problems += _privacy_inventory().check(page=SITE / "privacy.html")
     return problems
+
+
+def _privacy_inventory():
+    spec = importlib.util.spec_from_file_location("privacy_inventory", Path(__file__).resolve().parent / "privacy_inventory.py")
+    module = importlib.util.module_from_spec(spec)
+    assert spec and spec.loader
+    spec.loader.exec_module(module)
+    return module
 
 
 if __name__ == "__main__":

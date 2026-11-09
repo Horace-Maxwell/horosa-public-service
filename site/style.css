@@ -140,6 +140,20 @@ code { font-size: .9em; overflow-wrap: anywhere; }
 .colophon [lang] { font-family: var(--book); }
 .colophon .owner { margin-bottom: .75rem; color: var(--on-night); }
 
+.appendix { padding-block: 2.25rem; }
+.appendix h2 { font: 600 1.3rem/1.5 var(--song); }
+.appendix h2 span, .appendix > p span[lang] { display: block; font-family: var(--book); }
+.appendix h2 span { font-size: 1.15rem; font-weight: 600; }
+.appendix > p { max-width: 60rem; margin: 0 0 1.25rem; }
+.appendix > p span[lang] { margin-top: .4rem; color: var(--dim); font-size: 1rem; line-height: 1.6; }
+.inventory { overflow-x: auto; }
+.inventory table { width: 100%; border-collapse: collapse; font-size: .9rem; line-height: 1.55; }
+.inventory caption { text-align: left; padding-bottom: .6rem; font-weight: 600; }
+.inventory th, .inventory td { padding: .7rem .9rem .7rem 0; text-align: left; vertical-align: top; border-top: 1px solid color-mix(in srgb, var(--dim) 35%, transparent); }
+.inventory thead th { border-top: none; color: var(--dim); font-weight: 600; }
+.inventory tbody th { font-weight: 500; min-width: 12rem; }
+.inventory span[lang] { display: block; color: var(--dim); font: .85rem/1.45 var(--book); }
+
 @media (max-width: 860px) {
   .sheet { padding-inline: 1.25rem; }
   .masthead { background-position: calc(100% + 170px) 45%; background-size: 400px; padding-bottom: 2.75rem; }
@@ -161,4 +175,5 @@ code { font-size: .9em; overflow-wrap: anywhere; }
   .masthead a, .masthead nav, .skip { display: none; }
   h1 span, .meta, .meta span, .colophon, .colophon a { color: #000; }
   .clause { break-inside: avoid; padding-block: .75rem; }
+  .inventory tr { break-inside: avoid; }
 }

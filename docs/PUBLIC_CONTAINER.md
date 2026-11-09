@@ -69,6 +69,8 @@ Supervisor 只有在排盘服务预热记录满足 `loaded > 0`、`failed = 0`�
 - 公共进程不建记忆库、不写 runs、不产生 trace、不接云端决策（`horosa_public.config` 在启动前拒绝相反的环境）。
 - 排盘服务、Java、MCP 的标准输出与错误输出都丢弃；Java 用 `Null` appender 的 log4j2 配置且日志根不可写。
 - 准确的说法是「设计上不持久化请求缓存；服务进程可暂存计算数据，进程结束后该缓存消失」，不能写成「没有缓存」。
+- Java 的内存回落缓存（`LocalDocumentCache`，`ConcurrentHashMap`，多数条目无过期）会一直留到进程结束。隐私政策承诺「最长保留 24 小时」，
+  靠的是 mini 上每天 04:00 重启容器的 LaunchAgent（`deploy/mini/install_daily_restart.sh`）。这个任务停掉，就必须先改隐私政策。
 - `/tmp` 是 64 MiB 的内存文件系统，供运行时使用；它的内容同样属于验收检查范围。
 
 ## 验收清单（每次重建镜像后）
