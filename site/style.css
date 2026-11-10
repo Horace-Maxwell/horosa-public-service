@@ -101,6 +101,19 @@ h1 span {
   line-height: 1.55;
 }
 
+.cta { margin: 2rem 0 0; }
+.cta a {
+  display: inline-grid;
+  padding: .7rem 1.3rem;
+  border: 1px solid var(--moon);
+  border-radius: 999px;
+  text-decoration: none;
+  line-height: 1.3;
+}
+.cta a span { color: var(--on-night-dim); font: .8rem/1.3 var(--book); }
+.cta a:hover { background: var(--moon); color: var(--night); }
+.cta a:hover span { color: var(--night); }
+
 main { padding-block: 1.5rem 3rem; }
 
 .clause {

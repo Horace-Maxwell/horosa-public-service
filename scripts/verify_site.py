@@ -11,7 +11,7 @@ from pathlib import Path
 SITE = Path(__file__).resolve().parents[1] / "site"
 PLACEHOLDER = re.compile(r"&lt;[A-Z_]{3,}&gt;|<[A-Z_]{3,}>")
 REQUIRED = {
-    "index.html": ["AGPL-3.0", "不把你的输入和结果写入磁盘", "最长 24 小时", "娱乐参考"],
+    "index.html": ["AGPL-3.0", "不把你的输入和结果写入磁盘", "最长 24 小时", "娱乐参考", "https://chatgpt.com/plugins/plugin_asdk_app_6aee791ab12481918a546e97d0d69a2b"],
     "privacy.html": ["从不写入磁盘、数据库或日志", "最长保留 24 小时", "匿名用户 ID", "Cloudflare", "GitHub Pages", "Gmail", "13 岁",
                      "inventory:start"],
     "terms.html": ["AGPL-3.0", "不构成医疗、法律、财务", "按现状提供"],

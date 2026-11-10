@@ -4,6 +4,8 @@ The public MCP service behind the Horosa 星阙 plugin for ChatGPT and Codex: an
 
 星阙公共 MCP 服务的完整源码，匿名、只读、不保存请求。这里发布的是按 AGPL-3.0-only 第 13 条提供给网络用户的对应源码。
 
+**Use it in ChatGPT:** [Horosa 星阙 in the plugin directory](https://chatgpt.com/plugins/plugin_asdk_app_6aee791ab12481918a546e97d0d69a2b). Free, no sign-up. 在 ChatGPT 插件库添加后即可使用。
+
 ## What is here
 
 | Path | Contents |
